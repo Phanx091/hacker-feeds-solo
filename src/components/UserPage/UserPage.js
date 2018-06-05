@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchUser } from '../../redux/actions/userActions'
 import Nav from '../../components/Nav/Nav';
-import { USER_ACTIONS } from '../../redux/actions/userActions';
+// import { USER_ACTIONS } from '../../redux/actions/userActions';
 import { triggerLogout } from '../../redux/actions/loginActions';
 import axios from 'axios';
 
@@ -24,6 +24,19 @@ class UserPage extends Component {
     }
   }
 
+  componentDidMount() {
+    this.props.dispatch(fetchUser());
+    this.getItems();
+  }
+
+  componentDidUpdate() {
+    if (!this.props.user.isLoading && this.props.user.userName === null) {
+      this.props.history.push('home');
+    }
+  }
+
+
+
   getItems() {
     console.log(config);
     axios.get('/api/rss', config)
@@ -36,16 +49,9 @@ class UserPage extends Component {
   }
 
 
-  componentDidMount() {
-    this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
-    this.getItems()
-  }
 
-  componentDidUpdate() {
-    if (!this.props.user.isLoading && this.props.user.userName === null) {
-      this.props.history.push('home');
-    }
-  }
+
+
 
   logout = () => {
     this.props.dispatch(triggerLogout());
@@ -58,32 +64,25 @@ class UserPage extends Component {
     if (this.props.user.userName) {
       content = (
         <div>
-          <h1
-            id="welcome"
-          >
+          <h1 id="welcome">
             Welcome, { this.props.user.userName }!
-            {JSON.stringify(this.state.rssList)}
-
           </h1>
+   
+          {JSON.stringify(this.state.rssList)}
           <ul>
             {this.state.rssList.map(feed =>
               <li key={feed.id}><div style={{ textAlign:"center", margin:"10px", padding:"10px", border:"1px solid black" }}>
-                <img style={{ width: "170px", height: "50px" }} src={feed.image} /><br />
-                  {feed.title}<br />
-                {/* <button onClick={() => this.deleteItem(item.id)}> */}
-         
-               
+                <img style={{ width: "170px", height: "50px" }} src={feed.image} alt={feed.description} /><br />
+                  {feed.title}<br /> 
+                {/* <button onClick={() => this.deleteItem(item.id)}> </button> */}
                 </div>
               </li>
             )}
           </ul>
-          <button
-            onClick={this.logout}
-          >
-            Log Out
-          </button>
+            {/* <button onClick={this.logout}> Log Out </button> */}
+      </div>
+
          
-        </div>
       );
     }
 
@@ -91,6 +90,7 @@ class UserPage extends Component {
       <div>
         <Nav />
         { content }
+     
       </div>
     );
   }
