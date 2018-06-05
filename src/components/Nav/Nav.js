@@ -7,7 +7,17 @@ const Nav = () => (
       <ul>
         <li>
           <Link to="/user">
-            User Home
+            Home
+          </Link>
+        </li>
+        <li>
+          <Link to="/rss">
+            Add RSS
+          </Link>
+        </li>
+        <li>
+          <Link to="/my">
+            My RSS
           </Link>
         </li>
         <li>

@@ -11,12 +11,14 @@ import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 import UserPage from './components/UserPage/UserPage';
 import InfoPage from './components/InfoPage/InfoPage';
+import AddRSSPage from './components/AddRSSPage/AddRSSPage';
+import My_RSS_Page from './components/My_RSS_Page/My_RSS_Page';
 
 import './styles/main.css';
 
 const App = () => (
   <div>
-    <Header title="Project Base" />
+    <Header className="title" title="<Hacker_Feeds/>" />
     <Router>
       <Switch>
         <Redirect exact from="/" to="/home" />
@@ -35,6 +37,14 @@ const App = () => (
         <Route
           path="/info"
           component={InfoPage}
+        />
+        <Route
+          path="/rss"
+          component={AddRSSPage}
+        />
+        <Route
+          path="/my"
+          component={My_RSS_Page}
         />
         {/* OTHERWISE (no path!) */}
         <Route render={() => <h1>404</h1>} />
