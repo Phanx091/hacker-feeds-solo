@@ -15,6 +15,10 @@ function* postRSSForm(action) {
   try {
     const formPost = yield call(axios.post, '/api/rss', action.payload);
     console.log("formPost:", formPost);
+    yield dispatch({
+      type: 'SET_RSS',
+      payload: formPost.data
+    })
   } catch (error) {}
 }
 

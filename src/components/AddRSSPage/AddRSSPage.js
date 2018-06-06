@@ -57,6 +57,18 @@ handleChangeForRSS = (event) => {
 //   })
 // }
 
+// componentDidMount() {
+//   var that = this;
+//   axios.all([
+//     axios.get('/api/rss'),
+//     axios.get('https://api.rss2json.com/v1/api.json?rss_url=')
+//   ])
+//   .then(axios.spread(function (rssData, apiCall) {
+//     var rssDataVar = rssData.data || [];
+    
+//   }))
+// }
+
   
 
   render() {
