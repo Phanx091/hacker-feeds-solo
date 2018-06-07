@@ -11,10 +11,11 @@ import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 import UserPage from './components/UserPage/UserPage';
 import InfoPage from './components/InfoPage/InfoPage';
-import AddRSSPage from './components/AddRSSPage/AddRSSPage';
-import My_RSS_Page from './components/My_RSS_Page/My_RSS_Page';
+import AddRssPage from './components/AddRssPage/AddRssPage';
+import RssPage from './components/RssPage/RssPage';
 
 import './styles/main.css';
+
 
 const App = () => (
   <div>
@@ -40,11 +41,11 @@ const App = () => (
         />
         <Route
           path="/rss"
-          component={AddRSSPage}
+          component={AddRssPage}
         />
         <Route
           path="/my"
-          component={My_RSS_Page}
+          component={RssPage}
         />
         {/* OTHERWISE (no path!) */}
         <Route render={() => <h1>404</h1>} />

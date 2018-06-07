@@ -5,8 +5,7 @@ import Nav from "../../components/Nav/Nav";
 // import { USER_ACTIONS } from '../../redux/actions/userActions';
 import { triggerLogout } from "../../redux/actions/loginActions";
 import axios from "axios";
-
-import ApiArticles from "../ApiArticles/ApiArticles";
+import ApiJSON from "../ApiJSON/ApiJSON";
 
 const mapStateToProps = state => ({
   user: state.user
@@ -17,7 +16,7 @@ const config = {
   withCredentials: true
 };
 
-class UserPage extends Component {
+class RssPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -44,7 +43,8 @@ class UserPage extends Component {
         this.setState({
           rssList: response.data
         });
-        console.log(`Axios.get.API call all RSS:`, response.data);
+
+        console.log(`axios get to api call:`, response.data);
       })
       .catch(error => {
         throw error;
@@ -64,11 +64,13 @@ class UserPage extends Component {
         <div>
           <h1 id="welcome">Welcome, {this.props.user.userName}!</h1>
 
-          {/* {JSON.stringify(this.state.rssList)} */}
+          {JSON.stringify(this.state.rssList)}
           <ul>
-            {this.state.rssList.map(feed => <ApiArticles key={feed.id} feed={feed} />
-            )}
+            {this.state.rssList.map(feed => (
+              <ApiJSON key={feed.id} feed={feed} />
+            ))}
           </ul>
+        
         </div>
       );
     }
@@ -83,4 +85,4 @@ class UserPage extends Component {
 }
 
 // this allows us to use <App /> in index.js
-export default connect(mapStateToProps)(UserPage);
+export default connect(mapStateToProps)(RssPage);
