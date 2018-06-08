@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 
+
+
 const mapStateToProps = reduxState => ({
   
 });
@@ -12,6 +14,7 @@ class UserPageApi extends Component {
       apiData: [],
     };
   }
+
 
   componentDidMount() {
     axios
@@ -27,13 +30,29 @@ class UserPageApi extends Component {
       });
   }
 
+  htmlDecode(input){
+    var e = document.createElement('div');
+    e.innerHTML = input;
+    return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
+  }
+  
+
   render() {
+
     console.log(`Success axios.get.API`, this.state.apiData);
  
     return (
+
+
       <div>
-    
-        {this.state.apiData.map((data, i) => (
+        {this.state.apiData.map((data, i) => {
+
+
+
+
+          return (
+              
+
           <li key={i}>
             {data.title}
             <br />
@@ -41,15 +60,22 @@ class UserPageApi extends Component {
               style={{ width: "200px", height: "200px", textAlign:"center", margin:"10px", padding:"10px", border:"1px solid black"}}
               src={data.thumbnail}
               alt={data.description}/>
+
             <br />
             <div style={{ textAlign:"center", margin:"10px", padding:"10px", border:"1px solid black" }}>
-             {data.author} {data.pubDate} 
+            <div dangerouslySetInnerHTML={{__html: data.content}}/> <br />{data.author}  <br />{data.pubDate} 
+
+            
             </div>
           </li>
-        ))}
+        )})}
       </div>
+
     );
   }
+ 
 }
+
+
 
 export default connect(mapStateToProps)(UserPageApi);

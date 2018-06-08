@@ -7,7 +7,6 @@
 
 const initialState = {
     items: [],
-
   };
 
 const rss = (state = initialState, action) => {

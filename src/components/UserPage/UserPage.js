@@ -5,6 +5,10 @@ import Nav from "../../components/Nav/Nav";
 // import { triggerLogout } from "../../redux/actions/loginActions";
 import { RSS_ACTIONS } from "../../redux/actions/rssActions";
 import UserPageApi from "../UserPageApi/UserPageApi";
+import ReactHtmlParser from 'react-html-parser';
+
+
+
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -28,6 +32,8 @@ class UserPage extends Component {
     this.props.dispatch({type: RSS_ACTIONS.FETCH_RSS})
   }
 
+
+
   // logout = () => {
   //   this.props.dispatch(triggerLogout());
   //   // this.props.history.push('home');
@@ -42,6 +48,9 @@ class UserPage extends Component {
         <div>
           <h1 id="welcome">Welcome, {this.props.user.userName}!</h1>
           {/* {JSON.stringify(this.state.rssList)} */}
+          <ul>
+            {rss.map(feeds => <UserPageApi key={feeds.id} feed={feeds} />)}
+        </ul>
         </div>
       );
     }
@@ -49,9 +58,7 @@ class UserPage extends Component {
       <div>
         <Nav />
         {content}
-        <ul>
-            {rss.map(feeds => <UserPageApi key={feeds.id} feed={feeds} />)}
-        </ul>
+       
       </div>
     );
   }

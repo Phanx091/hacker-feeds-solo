@@ -5,7 +5,7 @@ const Header = ({ title }) => (
   <div className="instructions">
     <div>
       <h1 className="lead">{ title }</h1>
-      oh hi
+      oh hi mark
     </div>
   </div>
 );

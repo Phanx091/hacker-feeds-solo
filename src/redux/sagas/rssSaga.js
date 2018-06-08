@@ -1,11 +1,11 @@
 
-import { takeEvery, takeLatest, call, put as dispatch } from 'redux-saga/effects';
-import { callGetRss } from '../requests/rssRequest'; // callPostRss // removed from postRSSForm
+import { takeLatest, put as dispatch } from 'redux-saga/effects';
+import { callGetRss, callPostRss } from '../requests/rssRequest'; // callPostRss // removed from postRSSForm
 import { USER_ACTIONS } from '../actions/userActions';
 import { callUser } from '../requests/userRequests';
 import { RSS_ACTIONS } from '../actions/rssActions';
 // import { callApiItems , callApiForm } from '../requests/apiRequest';
-import axios from 'axios';
+// import axios from 'axios';
 
 // function* rootSaga() {
 //   yield takeEvery('ADD_RSS', postRSSForm); // post rss
@@ -15,7 +15,7 @@ import axios from 'axios';
 
 function* postRSSForm(action) {
   try {
-    const formPost = yield call(axios.post, '/api/rss', action.payload)// (axios.post, '/api/rss', action.payload) callPostRss();
+    const formPost = yield callPostRss();// (axios.post, '/api/rss', action.payload) callPostRss();
     const user = yield callUser();
     console.log('FormPost.get saga.axios success', formPost);
     yield dispatch({
@@ -103,8 +103,8 @@ function* rssFeedItems() {
 // const sagaMiddleware = createSagaMiddleware();
 
 function* rootSaga() {
-  yield takeEvery(RSS_ACTIONS.ADD_RSS, postRSSForm);
-  yield takeEvery(RSS_ACTIONS.SET_RSS, rssFeedItems); 
+  yield takeLatest(RSS_ACTIONS.ADD_RSS, postRSSForm);
+  yield takeLatest(RSS_ACTIONS.SET_RSS, rssFeedItems); 
   yield takeLatest(RSS_ACTIONS.FETCH_RSS, rssFeedItems); // get rss
 
 }

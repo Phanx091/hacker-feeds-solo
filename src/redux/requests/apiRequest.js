@@ -8,7 +8,7 @@ export function callApiForm(feed) {
   };
 
   return axios.get(`https://api.rss2json.com/v1/api.json?rss_url=${feed}`)
-  .then(response => response.data.Feed)
+  .then(response => response.data.feed)
   .catch(error => {
     throw error.response || error;
   });
