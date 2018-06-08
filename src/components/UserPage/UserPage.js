@@ -2,12 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchUser } from "../../redux/actions/userActions";
 import Nav from "../../components/Nav/Nav";
-// import { triggerLogout } from "../../redux/actions/loginActions";
 import { RSS_ACTIONS } from "../../redux/actions/rssActions";
 import UserPageApi from "../UserPageApi/UserPageApi";
-import ReactHtmlParser from 'react-html-parser';
-
-
 
 
 const mapStateToProps = state => ({
