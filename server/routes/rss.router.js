@@ -2,9 +2,7 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-/**
- * GET route template
- */
+// ROUTER.get
 router.get('/', (req, res) => {
     if(req.isAuthenticated()) {
         console.log(`router.get: ${req.body}`);
@@ -19,12 +17,10 @@ router.get('/', (req, res) => {
     } else {
         res.sendStatus(403);
     }
-});
+}); // end of router.get
 
-/**
- * POST route template
- */
 
+// ROUTER.post
 router.post('/', (req, res) => {
     if(req.isAuthenticated()) {
         console.log(`router.post: ${req.body}`);
@@ -42,6 +38,31 @@ router.post('/', (req, res) => {
     } else {
         res.sendStatus(403);
     }
-});
+});// end of router.post
+
+// ROUTER.delete
+router.delete("/:id", (req, res) => {
+    if(req.isAuthenticated()) {
+        console.log(req.query);
+        const delete_rss = req.params.id;
+        const queryText = 'DELETE FROM "rss" WHERE "id" = $1;';
+        pool
+        .query(queryText, [delete_rss])
+        .then(response => {
+            res.sendStatus(200);
+            console.log(
+            `DELETE successful on router.delete api/rss: ${response}`
+            );
+        })
+        .catch(error => {
+            console.log(`ERROR on router.delete api/rss: ${error}`);
+            res.sendStatus(500);
+        })
+    } else {
+        res.sendStatus(403);
+    }
+  }); // end of router.delete
+
+
 
 module.exports = router;

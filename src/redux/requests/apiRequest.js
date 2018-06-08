@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export function callApiForm(feed) {
-    console.log(`apiRequest.axios.get`, feed)
+    console.log(`apiRequest.axios.get.feed`, feed)
   const config = {
     headers: { 'Content-Type': 'application/json' },
     withCredentials: true,
@@ -15,7 +15,7 @@ export function callApiForm(feed) {
 }
 
 export function callApiItems(items) {
-    console.log(`apiRequest.axios.get`, items)
+    console.log(`apiRequest.axios.get.items`, items)
   const config = {
     headers: { 'Content-Type': 'application/json' },
     withCredentials: true,
@@ -27,6 +27,8 @@ export function callApiItems(items) {
     throw error.response || error;
   });
 }
+
+
 
 
   

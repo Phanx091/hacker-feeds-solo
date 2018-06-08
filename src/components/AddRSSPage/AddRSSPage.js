@@ -20,7 +20,7 @@ class AddRssPage extends Component {
 
   handleClickForRSS = event => {
     event.preventDefault();
-    const action = { type: "ADD_FORM", payload: this.state };
+    const action = { type: "ADD_RSS", payload: this.state };
     this.props.dispatch(action);
     console.log(this.state);
     console.log(action);

@@ -6,13 +6,14 @@ const mapStateToProps = reduxState => ({
   reduxState
 });
 
-class ApiJSON extends Component {
+class RssPageApi extends Component {
   constructor(props) {
     super(props);
     this.state = {
       apiData: []
     };
   }
+
 
   componentDidMount() {
     // console.log(`https://api.rss2json.com/v1/api.json?rss_url=${this.props.feed.url}`);
@@ -30,6 +31,14 @@ class ApiJSON extends Component {
         console.log(`ERROR on axios.get.API`, error);
       });
   }
+
+  // fetchRSSAction() {
+  //   this.props.dispatch((fetchRSS()))
+  // };
+
+
+
+
   render() {
     return (
       <li>
@@ -56,4 +65,4 @@ class ApiJSON extends Component {
   }
 }
 
-export default connect(mapStateToProps)(ApiJSON);
+export default connect(mapStateToProps)(RssPageApi);

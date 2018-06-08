@@ -1,21 +1,25 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchUser } from "../../redux/actions/userActions";
+// import { RSS_ACTIONS } from '../../redux/actions/rssActions';
+// import { FETCH_RSS } from '../../redux/actions/rssActions';
 import Nav from "../../components/Nav/Nav";
 // import { USER_ACTIONS } from '../../redux/actions/userActions';
 import { triggerLogout } from "../../redux/actions/loginActions";
-import axios from "axios";
+// import axios from "axios";
+import { RSS_ACTIONS } from "../../redux/actions/rssActions";
 
 import ApiArticles from "../ApiArticles/ApiArticles";
 
-const mapStateToProps = state => ({
-  user: state.user
+const mapStateToProps = (state, rss)=> ({
+  user: state.user,
+  rssList: state.data
 });
 
-const config = {
-  headers: { "Content-Type": "application/json" },
-  withCredentials: true
-};
+// const config = {
+//   headers: { "Content-Type": "application/json" },
+//   withCredentials: true
+// };
 
 class UserPage extends Component {
   constructor(props) {
@@ -27,7 +31,8 @@ class UserPage extends Component {
 
   componentDidMount() {
     this.props.dispatch(fetchUser());
-    this.getItems();
+    // this.prop.dispatch({type: RSS_ACTIONS.FETCH_RSS});
+    // this.getItems();
   }
 
   componentDidUpdate() {
@@ -37,18 +42,20 @@ class UserPage extends Component {
   }
 
   getItems() {
-    console.log(config);
-    axios
-      .get("/api/rss", config)
-      .then(response => {
-        this.setState({
-          rssList: response.data
-        });
-        console.log(`Axios.get.API call all RSS:`, response.data);
-      })
-      .catch(error => {
-        throw error;
-      });
+    // console.log(config);
+    // axios
+    //   .get("/api/rss", config)
+    //   .then(response => {
+    //     this.setState({
+    //       rssList: response.data
+    //     });
+    //     console.log(`Axios.get.API call all RSS:`, response.data);
+    //   })
+    //   .catch(error => {
+    //     throw error;
+    //   });
+    this.props.dispatch({type: RSS_ACTIONS.FETCH_RSS})
+   
   }
 
   logout = () => {
