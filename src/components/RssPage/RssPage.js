@@ -2,65 +2,29 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchUser } from "../../redux/actions/userActions";
 import Nav from "../../components/Nav/Nav";
-// import { USER_ACTIONS } from '../../redux/actions/userActions';
 import { triggerLogout } from "../../redux/actions/loginActions";
-// import axios from "axios";
 import RssPageApi from "../RssPageApi/RssPageApi";
 import { RSS_ACTIONS } from "../../redux/actions/rssActions";
 
-
 const mapStateToProps = state => ({
   user: state.user,
-  rss: state.rss,
-
-
+  rss: state.rss.items,
 });
-
-
-// const config = {
-//   headers: { "Content-Type": "application/json" },
-//   withCredentials: true
-// };
-
 class RssPage extends Component {
-  // constructor(props) {
-    // super(props);
-  //   this.state = {
-  //     rssList: []
-  //   };
-  // }
-
   componentDidMount() {
     this.props.dispatch(fetchUser());
     this.getItems();
-
   }
 
   componentDidUpdate() {
     if (!this.props.user.isLoading && this.props.user.userName === null) {
       this.props.history.push("home");
     }
-
   }
-
-  
 
   getItems() {
     this.props.dispatch({type: RSS_ACTIONS.FETCH_RSS})
-    // axios
-    //   .get("/api/rss", config)
-    //   .then(response => {
-    //     this.setState({
-    //       rssList: response.data
-    //     });
-
-    //     console.log(`axios get to api call:`, response.data);
-    //   })
-    //   .catch(error => {
-    //     throw error;
-    //   });
   }
-
 
   // handleClickForDelete = (id) => {
   //   axios.delete(`/api/rss/${id}`, config).then(() => {
@@ -69,8 +33,6 @@ class RssPage extends Component {
   //   });
   // }
 
-
-
   logout = () => {
     this.props.dispatch(triggerLogout());
     // this.props.history.push('home');
@@ -78,35 +40,29 @@ class RssPage extends Component {
 
   render() {
     let content = null;
-
+    const {rss} = this.props
 
     if (this.props.user.userName) {
       content = (
         <div>
           <h1 id="welcome">Welcome, {this.props.user.userName}!</h1>
-
           {/* {JSON.stringify(this.state.url)} */}
           <pre>{JSON.stringify(this.props.reduxState)}</pre>
-          <ul>
-            {this.props.rss.map(feed => (
-              <RssPageApi key={feed.id} feed={feed}/>
-            ))}
-
-            {/* {this.props.reduxState.RssPage.map((feed) =>  (<ApiJSON key={feed.id} feed={feed}/><button onClick={() => this.handleClickForDelete(feed.id)}>Remove</button>))} */}
-          </ul>
-        
         </div>
       );
     }
-
     return (
       <div>
         <Nav />
         {content}
+        <ul>
+            {rss.map(feed => (
+              <RssPageApi key={feed.id} feed={feed}/>
+            ))}
+        </ul>
       </div>
     );
   }
 }
 
-// this allows us to use <App /> in index.js
 export default connect(mapStateToProps)(RssPage);

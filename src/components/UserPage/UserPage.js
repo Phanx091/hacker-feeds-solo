@@ -1,34 +1,17 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchUser } from "../../redux/actions/userActions";
-// import { RSS_ACTIONS } from '../../redux/actions/rssActions';
-// import { FETCH_RSS } from '../../redux/actions/rssActions';
 import Nav from "../../components/Nav/Nav";
-// import { USER_ACTIONS } from '../../redux/actions/userActions';
-import { triggerLogout } from "../../redux/actions/loginActions";
-// import axios from "axios";
+// import { triggerLogout } from "../../redux/actions/loginActions";
 import { RSS_ACTIONS } from "../../redux/actions/rssActions";
-
-import ApiArticles from "../ApiArticles/ApiArticles";
+import UserPageApi from "../UserPageApi/UserPageApi";
 
 const mapStateToProps = state => ({
   user: state.user,
-  rss: state.rss
+  rss: state.rss.items
 });
 
-// const config = {
-//   headers: { "Content-Type": "application/json" },
-//   withCredentials: true
-// };
-
 class UserPage extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     rssList: []
-  //   };
-  // }
-
   componentDidMount() {
     this.props.dispatch(fetchUser());
     // this.prop.dispatch({type: RSS_ACTIONS.FETCH_RSS});
@@ -42,48 +25,33 @@ class UserPage extends Component {
   }
 
   getItems() {
-    // console.log(config);
-    // axios
-    //   .get("/api/rss", config)
-    //   .then(response => {
-    //     this.setState({
-    //       rssList: response.data
-    //     });
-    //     console.log(`Axios.get.API call all RSS:`, response.data);
-    //   })
-    //   .catch(error => {
-    //     throw error;
-    //   });
     this.props.dispatch({type: RSS_ACTIONS.FETCH_RSS})
-   
   }
 
-  logout = () => {
-    this.props.dispatch(triggerLogout());
-    // this.props.history.push('home');
-  };
+  // logout = () => {
+  //   this.props.dispatch(triggerLogout());
+  //   // this.props.history.push('home');
+  // };
 
   render() {
+    const {rss} = this.props;
     let content = null;
 
     if (this.props.user.userName) {
       content = (
         <div>
           <h1 id="welcome">Welcome, {this.props.user.userName}!</h1>
-
           {/* {JSON.stringify(this.state.rssList)} */}
-          <ul>
-            {this.props.rss.map(feed => <ApiArticles key={feed.id} feed={feed} />
-            )}
-          </ul>
         </div>
       );
     }
-
     return (
       <div>
         <Nav />
         {content}
+        <ul>
+            {rss.map(feeds => <UserPageApi key={feeds.id} feed={feeds} />)}
+        </ul>
       </div>
     );
   }

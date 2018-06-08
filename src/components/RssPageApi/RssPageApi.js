@@ -5,7 +5,6 @@ import axios from "axios";
 const mapStateToProps = reduxState => ({
   reduxState
 });
-
 class RssPageApi extends Component {
   constructor(props) {
     super(props);
@@ -14,9 +13,7 @@ class RssPageApi extends Component {
     };
   }
 
-
   componentDidMount() {
-    // console.log(`https://api.rss2json.com/v1/api.json?rss_url=${this.props.feed.url}`);
     axios
       .get(
         `https://api.rss2json.com/v1/api.json?rss_url=${this.props.feed.url}`)
@@ -32,13 +29,6 @@ class RssPageApi extends Component {
       });
   }
 
-  // fetchRSSAction() {
-  //   this.props.dispatch((fetchRSS()))
-  // };
-
-
-
-
   render() {
     return (
       <li>
@@ -49,10 +39,9 @@ class RssPageApi extends Component {
             margin: "10px",
             padding: "10px",
             border: "1px solid black"
-          }}
-        >
+          }}>
           <img
-            style={{ width: "50px", height: "50px" }}
+            style={{ width: "150px", height: "150px" }}
             src={this.state.apiData.image}
             alt={this.state.apiData.description}
           />

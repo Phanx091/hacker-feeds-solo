@@ -1,30 +1,26 @@
 
-import { takeEvery, takeLatest, put as dispatch } from 'redux-saga/effects';
-import { callGetRss, callPostRss } from '../requests/rssRequest';
+import { takeEvery, takeLatest, call, put as dispatch } from 'redux-saga/effects';
+import { callGetRss } from '../requests/rssRequest'; // callPostRss // removed from postRSSForm
 import { USER_ACTIONS } from '../actions/userActions';
 import { callUser } from '../requests/userRequests';
-
-// import { callApiItems , callApiForm } from '../requests/apiRequest';
-
 import { RSS_ACTIONS } from '../actions/rssActions';
-// import axios from 'axios';
+// import { callApiItems , callApiForm } from '../requests/apiRequest';
+import axios from 'axios';
 
 // function* rootSaga() {
 //   yield takeEvery('ADD_RSS', postRSSForm); // post rss
 //   yield takeEvery('SET_RSS', rssFeedItems); // get rss
-
-//   // yield takeEvery('DELETE_RSS', itemDeleted);
+//   // yield takeEvery('DELETE_RSS', itemDeleted); // delete rss
 // }
-
 
 function* postRSSForm(action) {
   try {
-    const formPost = yield callPostRss();// (axios.post, '/api/rss', action.payload)
+    const formPost = yield call(axios.post, '/api/rss', action.payload)// (axios.post, '/api/rss', action.payload) callPostRss();
     const user = yield callUser();
     console.log('FormPost.get saga.axios success', formPost);
     yield dispatch({
       type: RSS_ACTIONS.SET_RSS,
-      payload: formPost.data
+      payload: formPost
     })
     yield dispatch({
       type: USER_ACTIONS.SET_USER,
