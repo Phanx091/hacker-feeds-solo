@@ -41,7 +41,7 @@ class AddRssPage extends Component {
           <h3>ADD RSS PAGE</h3>
           <input
             onChange={this.handleChangeForRSS}
-            name="URL"
+            name="url"
             placeholder="RSS URL HERE"
           />
 

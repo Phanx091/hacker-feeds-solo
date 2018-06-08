@@ -11,9 +11,9 @@ import { RSS_ACTIONS } from "../../redux/actions/rssActions";
 
 import ApiArticles from "../ApiArticles/ApiArticles";
 
-const mapStateToProps = (state, rss)=> ({
+const mapStateToProps = state => ({
   user: state.user,
-  rssList: state.data
+  rss: state.rss
 });
 
 // const config = {
@@ -22,17 +22,17 @@ const mapStateToProps = (state, rss)=> ({
 // };
 
 class UserPage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      rssList: []
-    };
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     rssList: []
+  //   };
+  // }
 
   componentDidMount() {
     this.props.dispatch(fetchUser());
     // this.prop.dispatch({type: RSS_ACTIONS.FETCH_RSS});
-    // this.getItems();
+    this.getItems();
   }
 
   componentDidUpdate() {
@@ -73,7 +73,7 @@ class UserPage extends Component {
 
           {/* {JSON.stringify(this.state.rssList)} */}
           <ul>
-            {this.state.rssList.map(feed => <ApiArticles key={feed.id} feed={feed} />
+            {this.props.rss.map(feed => <ApiArticles key={feed.id} feed={feed} />
             )}
           </ul>
         </div>
