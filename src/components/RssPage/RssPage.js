@@ -52,6 +52,7 @@ class RssPage extends Component {
       );
     }
     return (
+      
       <div>
         <Nav />
         {content}

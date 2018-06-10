@@ -1,22 +1,34 @@
 import axios from 'axios';
 
 export function callPostRss(payload) {
-    // const body = ({
-    //     url: payload.url
-    // })
+    console.log('this is payload:', payload);
+    const body = ({
+        url: payload.url
+    })
 
-  const config = {
-    headers: { 'Content-Type': 'application/json' },
-    withCredentials: true,
-  };
 
-  return axios.post('/api/rss', payload.url, config)
-    .then(response => response.data)
-    .catch((error) => {
-      throw error.response || error;
-    }); 
+//   return axios.post('/api/rss', body)
+//     .then(response => response.data)
+//     .catch((error) => {
+//       throw error.response || error;
+//     });
+  axios({
+      method: "POST",
+      url: "/api/rss",
+      data: body,
+  }).then((response) => {
+      console.log('payload success!', response);
+  }).catch((error) => {
+      alert('There was a problem...on axios post');
+  });
+  
+  
+  
 
 }
+
+
+
 
 export function callGetRss() {
   const config = {
@@ -30,7 +42,4 @@ export function callGetRss() {
       throw error.response || error;
     });
 }
-
-
-
 

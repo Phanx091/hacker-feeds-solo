@@ -26,11 +26,13 @@ router.post('/', (req, res) => {
         console.log(`router.post: ${req.body}`);
         console.log(`router.post USER: ${req.user}`);
         console.log('is authenticated?', req.isAuthenticated());
-
+        const url_id = req.body.url
         const queryText = `INSERT INTO "rss" ("url", "person_id")
                         VALUES ($1, $2) RETURNING "url";`;
-        pool.query(queryText, [req.body.URL, req.user.id])
-        .then((results) => { res.sendStatus(201); })
+        pool.query(queryText, [url_id, req.user.id])
+        .then((results) => { res.sendStatus(201); 
+        console.log('router.post: successful', results);
+        })
         .catch((error) => {
             console.log(`ERROR trying to POST /api/rss: ${error}`);
             res.sendStatus(500);
@@ -41,27 +43,27 @@ router.post('/', (req, res) => {
 });// end of router.post
 
 // ROUTER.delete
-router.delete("/:id", (req, res) => {
-    if(req.isAuthenticated()) {
-        console.log(req.query);
-        const delete_rss = req.params.id;
-        const queryText = 'DELETE FROM "rss" WHERE "id" = $1;';
-        pool
-        .query(queryText, [delete_rss])
-        .then(response => {
-            res.sendStatus(200);
-            console.log(
-            `DELETE successful on router.delete api/rss: ${response}`
-            );
-        })
-        .catch(error => {
-            console.log(`ERROR on router.delete api/rss: ${error}`);
-            res.sendStatus(500);
-        })
-    } else {
-        res.sendStatus(403);
-    }
-  }); // end of router.delete
+// router.delete("/:id", (req, res) => {
+//     if(req.isAuthenticated()) {
+//         console.log(req.query);
+//         const delete_rss = req.params.id;
+//         const queryText = 'DELETE FROM "rss" WHERE "id" = $1;';
+//         pool
+//         .query(queryText, [delete_rss])
+//         .then(response => {
+//             res.sendStatus(200);
+//             console.log(
+//             `DELETE successful on router.delete api/rss: ${response}`
+//             );
+//         })
+//         .catch(error => {
+//             console.log(`ERROR on router.delete api/rss: ${error}`);
+//             res.sendStatus(500);
+//         })
+//     } else {
+//         res.sendStatus(403);
+//     }
+//   }); // end of router.delete
 
 
 

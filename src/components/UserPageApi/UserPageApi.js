@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
+
 /// Material-ul-imports
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -26,7 +27,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 const styles = theme => ({
   card: {
     margin: 30,
-    overflow: 'hidden',
+    // overflow: 'hidden',
     marginLeft: 44,
     marginRight: 15,
     maxWidth: 340,
@@ -34,7 +35,7 @@ const styles = theme => ({
     // display: 'block',
     width: '40vw',
     transitionDuration: '0.3s',
-    height: '30vw'
+    height: '40vw'
   },
   media: {
     height: 10,
@@ -61,7 +62,8 @@ const styles = theme => ({
   },
   header: {
     borderRadius: 3,
-  }
+  },
+
 });
 /// Material-ul-const
 
@@ -116,10 +118,10 @@ const styles = theme => ({
 //           <li key={i}>
 //             {data.title}
 //             <br />
-//             <img
+//             {/* <img
 //               style={{ width: "200px", height: "200px", textAlign:"center", margin:"10px", padding:"10px", border:"1px solid black"}}
 //               src={data.thumbnail}
-//               alt={data.description}/>
+//               alt={data.description}/> */}
 
 //             <br />
 //             <div style={{ textAlign:"center", margin:"10px", padding:"10px", border:"1px solid black" }}>
@@ -134,8 +136,11 @@ const styles = theme => ({
  
 // }
 
+
+
+// export default connect(mapStateToProps)(UserPageApi);
+
 const mapStateToProps = reduxState => ({
-  
 });
 
 class UserPageApi extends Component {
@@ -164,6 +169,8 @@ class UserPageApi extends Component {
     this.setState({ expanded: !this.state.expanded });
   };
 
+
+
   render() {
     console.log(`Success axios.get.API`, this.state.apiData);
     const { classes } = this.props;
@@ -187,6 +194,7 @@ class UserPageApi extends Component {
             } 
          
             title={data.title}
+
             
           
   
@@ -234,11 +242,16 @@ class UserPageApi extends Component {
             {/* parahgraph 2 */}
               </Typography>
               {/* <Typography paragraph> */}
+              <div className="removeImg">
                 <div dangerouslySetInnerHTML={{__html: data.content}}/>
+              </div>
               {/* </Typography> */}
             
               <Typography>
-                Set aside off of the heat to let rest for 10 minutes, and then serve.
+                 {/* </Typography> */}
+                 {data.content}
+                 {data.author}
+                 
               </Typography>
             </CardContent>
           </Collapse>
