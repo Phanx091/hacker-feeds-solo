@@ -5,15 +5,11 @@ export function callPostRss(payload) {
     const body = ({
         url: payload.url
     })
-
-
 //   return axios.post('/api/rss', body)
 //     .then(response => response.data)
 //     .catch((error) => {
 //       throw error.response || error;
 //     });
-
-
   axios({
       method: "POST",
       url: "/api/rss",
@@ -24,10 +20,6 @@ export function callPostRss(payload) {
       alert('Error on axios post');
   });
 }
-
-
-
-
 export function callGetRss() {
   const config = {
     headers: { 'Content-Type': 'application/json' },
@@ -40,4 +32,19 @@ export function callGetRss() {
       throw error.response || error;
     });
 }
+export function callDeleteRss(id) {
+    axios({
+        method: 'DELETE',
+        url: `/api/rss/${id}`,
+    }).then((response) => {
+        console.log('successful delete', response)
+    }).catch((error) => {
+        throw error.response || error;
+    })
+  }
+  
+  
+
+
+
 

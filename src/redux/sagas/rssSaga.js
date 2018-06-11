@@ -1,6 +1,6 @@
 
 import { takeLatest, takeEvery, put as dispatch } from 'redux-saga/effects';
-import { callGetRss, callPostRss} from '../requests/rssRequest'; // callPostRss // removed from postRSSForm
+import { callGetRss, callPostRss, callDeleteRss} from '../requests/rssRequest'; // callPostRss // removed from postRSSForm
 import { USER_ACTIONS } from '../actions/userActions';
 import { callUser } from '../requests/userRequests';
 import { RSS_ACTIONS } from '../actions/rssActions';
@@ -12,7 +12,6 @@ import { RSS_ACTIONS } from '../actions/rssActions';
 //   yield takeEvery('SET_RSS', rssFeedItems); // get rss
 //   // yield takeEvery('DELETE_RSS', itemDeleted); // delete rss
 // }
-
 // (axios.post, '/api/rss', action.payload) 
 
 function* postRSSForm(action) {
@@ -37,8 +36,6 @@ function* postRSSForm(action) {
   //   });
   }
 }
-
-
 // get api call with items 
 // function* apiFetchItems() {
 //   try{
@@ -85,30 +82,25 @@ function* rssFeedItems() {
     });
   }
 }
+function* deleteRssItems(payload) {
+  const { id } = payload;
+  try {
+    const itemDeleted = yield callDeleteRss(id);
+    console.log('itemDeleted.delete saga.axios success', itemDeleted);
+    yield dispatch({
+      type: RSS_ACTIONS.SET_RSS,
+    })
 
-
-
-
-// function* deleteFeedItems() {
-//   try {
-//     const itemDeleted = yield call (axios.delete, `/api/rss/${id}`, config);
-//     console.log('itemDeleted.delete saga.axios success', itemDeleted);
-//     yield dispatch({
-//       type: 'SET_RSS',
-//     })
-
-//   } catch (error) {}
-// }
-
+  } catch (error) {}
+}
 // const sagaMiddleware = createSagaMiddleware();
 
 function* rootSaga() {
   yield takeEvery(RSS_ACTIONS.ADD_RSS, postRSSForm);
-  yield takeEvery(RSS_ACTIONS.SET_RSS, rssFeedItems); 
+  yield takeEvery(RSS_ACTIONS.SET_RSS, rssFeedItems);
+  yield takeLatest(RSS_ACTIONS.DELETE_RSS, deleteRssItems); 
   yield takeLatest(RSS_ACTIONS.FETCH_RSS, rssFeedItems); // get rss
-
 }
-
-
-
 export default rootSaga;
+
+// call (axios.delete, `/api/rss/${id}`);

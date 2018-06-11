@@ -8,11 +8,13 @@ const initialState = {
   };
 
   const rss = (state = initialState, action) => {
-    if (action.type === RSS_ACTIONS.SAVE_RSS) {
-        console.log(action.payload);
-        return  {...state, items: [...action.payload]};
+    switch (action.type) {
+        case RSS_ACTIONS.SAVE_RSS:
+            console.log(action.payload);
+            return  {...state, items: [...action.payload]};
+        default:
+            return state
     }
-    return state;
 }
 export default rss;
 

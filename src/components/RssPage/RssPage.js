@@ -15,17 +15,16 @@ class RssPage extends Component {
     this.props.dispatch(fetchUser());
     this.getItems();
   }
-
   componentDidUpdate() {
     if (!this.props.user.isLoading && this.props.user.userName === null) {
       this.props.history.push("home");
     }
-  }
 
+
+  }
   getItems() {
     this.props.dispatch({type: RSS_ACTIONS.FETCH_RSS})
   }
-
   // handleClickForDelete = (id) => {
   //   axios.delete(`/api/rss/${id}`, config).then(() => {
   //   }).catch(error => {
@@ -41,7 +40,6 @@ class RssPage extends Component {
   render() {
     let content = null;
     const {rss} = this.props
-
     if (this.props.user.userName) {
       content = (
         <div>
@@ -52,7 +50,6 @@ class RssPage extends Component {
       );
     }
     return (
-      
       <div>
         <Nav />
         {content}
@@ -65,5 +62,10 @@ class RssPage extends Component {
     );
   }
 }
-
 export default connect(mapStateToProps)(RssPage);
+
+
+
+
+
+
