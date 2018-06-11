@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 
+// const apiKey = 'aslzrjijkn6uvhmtk18wck8vhkadgl2iwdv2yejm';
 const mapStateToProps = reduxState => ({
   reduxState
 });
@@ -29,6 +30,17 @@ class RssPageApi extends Component {
       });
   }
 
+
+  handleClickForAdd = () => {
+    console.log('click add works');
+  }
+
+  handleClickForDelete = () => {
+    console.log('click delete works');
+  }
+
+
+
   render() {
     return (
       <li>
@@ -48,6 +60,8 @@ class RssPageApi extends Component {
           <br />
           {this.state.apiData.title}
           <br />
+          <button onClick={this.handleClickForAdd}>add</button>
+          <button onClick={this.handleClickForDelete}>delete</button>
         </div>
       </li>
     );

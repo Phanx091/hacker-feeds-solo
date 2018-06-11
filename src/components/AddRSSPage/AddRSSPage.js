@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { RSS_ACTIONS } from '../../redux/actions/rssActions';
+import RssPageApi from "../RssPageApi/RssPageApi";
 // import axios from 'axios';
 
 import Nav from "../../components/Nav/Nav";
 
 const mapStateToProps = state => ({
-  user: state.user
+  user: state.user,
+  rss: state.rss.items,
 });
 class AddRssPage extends Component {
   constructor(props) {
@@ -18,7 +20,6 @@ class AddRssPage extends Component {
       this.props.history.push("/rss");
     }
   }
-
   handleClickForRSS = event => {
     event.preventDefault();
     const action = { type: RSS_ACTIONS.ADD_RSS, payload: this.state};
@@ -36,6 +37,7 @@ class AddRssPage extends Component {
   };
 
   render() {
+    const {rss} = this.props;
     return (
       <div>
         <Nav />
@@ -48,6 +50,11 @@ class AddRssPage extends Component {
           />
             <button onClick={this.handleClickForRSS}> Add </button>
         </form>
+        <ul>
+            {rss.map(feed => (
+              <RssPageApi key={feed.id} feed={feed}/>
+            ))}
+        </ul>
       
       </div>
     );

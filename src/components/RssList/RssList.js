@@ -8,7 +8,7 @@ const mapStateToProps = state => ({
   user: state.user,
 });
 
-class InfoPage extends Component {
+class RssList extends Component {
  
 
   render() {
@@ -18,7 +18,7 @@ class InfoPage extends Component {
       content = (
         <div>
           <p>
-            Info Page
+            RssList
           </p>
         </div>
       );
@@ -34,4 +34,4 @@ class InfoPage extends Component {
 }
 
 // this allows us to use <App /> in index.js
-export default connect(mapStateToProps)(InfoPage);
+export default connect(mapStateToProps)(RssList);

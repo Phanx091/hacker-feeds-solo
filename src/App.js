@@ -10,9 +10,10 @@ import Header from './components/Header/Header';
 import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 import UserPage from './components/UserPage/UserPage';
-import InfoPage from './components/InfoPage/InfoPage';
+import RssList from './components/RssList/RssList';
 import AddRssPage from './components/AddRssPage/AddRssPage';
 import RssPage from './components/RssPage/RssPage';
+
 
 import './styles/main.css';
 
@@ -42,8 +43,8 @@ const App = () => (
           component={UserPage}
         />
         <Route
-          path="/info"
-          component={InfoPage}
+          path="/list"
+          component={RssList}
         />
         <Route
           path="/rss"

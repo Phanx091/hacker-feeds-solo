@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
+// DOMPurify
+import DOMPurify from 'dompurify'
+// import createDOMPurify from 'dompurify';
+// import { JSDOM } from 'jsdom';
+
+
 
 /// Material-ul-imports
 import PropTypes from 'prop-types';
@@ -26,24 +32,24 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 /// Material-ul-const
 const styles = theme => ({
   card: {
-    margin: 30,
+    // margin: 30,
     // overflow: 'hidden',
-    marginLeft: 44,
-    marginRight: 15,
-    maxWidth: 340,
+    // marginLeft: 44,
+    // marginRight: 15,
+    maxWidth: 200,
     padding: '10px',
     // display: 'block',
     width: '40vw',
     transitionDuration: '0.3s',
-    height: '40vw'
+    // height: '40vw'
   },
   media: {
-    height: 10,
+    height: 7,
     paddingTop: '56.25%', // 16:9
   },
-  title: {
-    fontSize: 14,
-  },
+  // title: {
+  //   fontSize: 14,
+  // },
   actions: {
     display: 'flex',
   },
@@ -51,6 +57,7 @@ const styles = theme => ({
     transform: 'rotate(0deg)',
     transition: theme.transitions.create('transform', {
       duration: theme.transitions.duration.shortest,
+      
     }),
     marginLeft: 'auto',
   },
@@ -63,6 +70,8 @@ const styles = theme => ({
   header: {
     borderRadius: 3,
   },
+
+
 
 });
 /// Material-ul-const
@@ -138,18 +147,21 @@ const styles = theme => ({
 
 
 
+
 // export default connect(mapStateToProps)(UserPageApi);
 
 const mapStateToProps = reduxState => ({
 });
-
+// const apiKey = 'aslzrjijkn6uvhmtk18wck8vhkadgl2iwdv2yejm';
 class UserPageApi extends Component {
   constructor(props) {
     super(props);
     this.state = { 
       apiData: [],
       expanded: false };
+      
   }
+
   componentDidMount() {
     axios
     .get(
@@ -164,16 +176,28 @@ class UserPageApi extends Component {
     });
   }
   
-
   handleExpandClick = () => {
     this.setState({ expanded: !this.state.expanded });
   };
 
 
 
+  
   render() {
+//     const window = (new JSDOM('')).window;
+// const DOMPurify = createDOMPurify(window);
+
+DOMPurify.sanitize('<img src=x onerror=alert(1)//>');
+
+var config = { ALLOWED_TAGS: ['p', '#text'], KEEP_CONTENT: false };
+// var clean = DOMPurify.sanitize(config);
+// document.getElementById('sanitized').innerHTML = clean
+DOMPurify.sanitize(config)
+
+
     console.log(`Success axios.get.API`, this.state.apiData);
     const { classes } = this.props;
+    
 
     return (
       <div>
@@ -192,27 +216,20 @@ class UserPageApi extends Component {
                 <MoreVertIcon />
               </IconButton>
             } 
-         
-            title={data.title}
 
-            
-          
-  
+
+            title={data.title}
           />
           
           <CardMedia
             className={classes.media}
-            image={data.thumbnail}
-            
-         
-         
-            // dangerouslySetInnerHTML={{__html: data.title}}
-           
-
-          />
+            image={data.thumbnail}/>
           <CardContent>
             {/* <Typography component="p"> */}
-            {data.description}
+            {data.pubDate}
+        
+ 
+            {/* {data.description} */}
             {/* </Typography> */}
           </CardContent>
           <CardActions className={classes.actions} disableActionSpacing>
@@ -237,26 +254,28 @@ class UserPageApi extends Component {
             <CardContent>
               <Typography paragraph variant="body2">
                   {/* empty for now */}
+           
               </Typography>
               <Typography paragraph>
             {/* parahgraph 2 */}
               </Typography>
               {/* <Typography paragraph> */}
-              <div className="removeImg">
-                <div dangerouslySetInnerHTML={{__html: data.content}}/>
-              </div>
+           
+              {/* <div dangerouslySetInnerHTML={{__html: data.content}}/> */}
+              {/* {data.content} */}
+            <div className="jasonphan" dangerouslySetInnerHTML={{__html: "<style>img{display:None;}</style>" + data.content}}/>
               {/* </Typography> */}
             
               <Typography>
                  {/* </Typography> */}
-                 {data.content}
+                
                  {data.author}
                  
               </Typography>
             </CardContent>
           </Collapse>
         </Card>
-       
+
         </li>
         )})}
       </div>

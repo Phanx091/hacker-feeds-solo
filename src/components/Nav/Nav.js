@@ -22,8 +22,8 @@ const Nav = () => (
           </Link>
         </li>
         <li>
-          <Link to="/info">
-            Info Page
+          <Link to="/list">
+            RSS
           </Link>
         </li>
         <li>

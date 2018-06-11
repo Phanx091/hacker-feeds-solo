@@ -12,6 +12,8 @@ export function callPostRss(payload) {
 //     .catch((error) => {
 //       throw error.response || error;
 //     });
+
+
   axios({
       method: "POST",
       url: "/api/rss",
@@ -19,12 +21,8 @@ export function callPostRss(payload) {
   }).then((response) => {
       console.log('payload success!', response);
   }).catch((error) => {
-      alert('There was a problem...on axios post');
+      alert('Error on axios post');
   });
-  
-  
-  
-
 }
 
 
