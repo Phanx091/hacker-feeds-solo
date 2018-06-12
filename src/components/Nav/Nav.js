@@ -304,7 +304,7 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 // import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-// import lightgreen from '@material-ui/core/colors/lightgreen';
+
 
 const drawerWidth = 240;
 
@@ -401,12 +401,6 @@ class Nav extends React.Component {
     this.setState({ open: false });
   };
 
-  // handleChangeAnchor = event => {
-  //   this.setState({
-  //     anchor: event.target.value,
-  //   });
-  // };
-
   render() {
     const { classes, theme } = this.props;
     const { anchor, open } = this.state;
@@ -426,26 +420,25 @@ class Nav extends React.Component {
           </IconButton>
         </div>
         <div className={classes.root}>
-       <List component="nav">
-         <ListItem button component="a" href="/user">
-           <ListItemText primary="Home" />
-         </ListItem>
-         <ListItem button component="a" href="/rss">
-           <ListItemText primary="ADD RSS" />
-         </ListItem>
-         <ListItem button component="a" href="/my">
-           <ListItemText primary="MY RSS" />
-         </ListItem>
-         <ListItem button component="a" href="/list">
-           <ListItemText primary="My Favorites" />
-         </ListItem>
-         <ListItem button component="a" href="/home">
-           <ListItemText primary="Logout" />
-         </ListItem>
-       </List>
-     </div>
+          <List component="NAV">
+            <ListItem button component="a" href="/user">
+              <ListItemText primary="Home" />
+            </ListItem>
+            <ListItem button component="a" href="/rss">
+              <ListItemText primary="ADD RSS" />
+            </ListItem>
+            <ListItem button component="a" href="/my">
+              <ListItemText primary="MY RSS" />
+            </ListItem>
+            <ListItem button component="a" href="/list">
+              <ListItemText primary="My Favorites" />
+            </ListItem>
+            <ListItem button component="a" href="/home">
+              <ListItemText primary="Logout" />
+            </ListItem>
+          </List>
+        </div>
         {/* <Divider /> */}
-
       </Drawer>
     );
 
@@ -460,7 +453,6 @@ class Nav extends React.Component {
 
     return (
       <div className={classes.root}>
-        {/* <div className={classes.appFrame}> */}
           <AppBar
             className={classNames(classes.appBar, {
               [classes.appBarShift]: open,
@@ -476,16 +468,14 @@ class Nav extends React.Component {
               >
                 <MenuIcon />
               </IconButton>
-              <Typography variant="title" color="inherit" noWrap>
+              <Typography variant="title" styles="text-align: center" color="inherit" noWrap>
               <div dangerouslySetInnerHTML={{__html:'< Hacker_Feeds / >'}}/>
               </Typography>
             </Toolbar>
           </AppBar>
           {before}
-
           {after}
         </div>
-      // </div>
     );
   }
 }

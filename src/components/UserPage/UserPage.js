@@ -27,9 +27,6 @@ class UserPage extends Component {
   getItems() {
     this.props.dispatch({type: RSS_ACTIONS.FETCH_RSS})
   }
-
-
-
   // logout = () => {
   //   this.props.dispatch(triggerLogout());
   //   // this.props.history.push('home');
@@ -43,8 +40,7 @@ class UserPage extends Component {
       content = (
         <div>
           <h1 id="welcome">Welcome, {this.props.user.userName}!</h1>
-          {/* {JSON.stringify(this.state.rssList)} */}
-          <ul>
+        <ul>
             {rss.map(feeds => <UserPageApi key={feeds.id} feed={feeds} />)}
         </ul>
         </div>
@@ -54,7 +50,6 @@ class UserPage extends Component {
       <div>
         <Nav />
         {content}
-       
       </div>
     );
   }

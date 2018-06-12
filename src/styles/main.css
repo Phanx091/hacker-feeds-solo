@@ -7,21 +7,21 @@ body {
 
 form {
     background-color: #dbd5d5;
-    width: 30%;
-    height: 250px;
+    width: 90% auto;
+    height: 100px;
     margin: 20px auto;
     padding: 25px;
     border-radius: 2px;
 }
 
-input {
+/* input {
     margin: 5px;
     margin-bottom: 10px;
 }
 
 input[type="submit"] {
     margin: 10px;
-}
+} */
 
 .message {
     padding: 10px 0;
@@ -39,11 +39,11 @@ input[type="submit"] {
     background-color: #f8f8f8;
 }
 
-.navbar {
+/* .navbar {
   background-color: #00acb0;
   width: 100%;
   border-radius: 0px;
-}
+} */
 
 ul {
     list-style-type: none;
@@ -53,20 +53,20 @@ ul {
 }
 
 li {
-    float: left;
+    float: right;
 }
 
 li a {
-    display: block;
+    /* display: block; */
     color: white;
     text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+    /* padding: 14px 16px; */
+    /* text-decoration: none; */
 
 }
 
 /* Change the link color to #111 (black) on hover */
-li a:hover {
+/* li a:hover {
     text-decoration: underline;
     color: #eee;
-}
+} */

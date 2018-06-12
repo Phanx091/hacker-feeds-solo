@@ -18,20 +18,40 @@ const mapStateToProps = reduxState => ({
   reduxState
 });
 
+
+// background-color: #dbd5d5;
+// width: 90% auto;
+// height: 100px;
+// margin: 20px auto;
+// padding: 25px;
+// border-radius: 2px;
+// }
+
+
 const styles = {
   card: {
-    maxWidth: 150,
+    borderRadius: 20,
+    maxWidth: 160,
+    overflow: 'hidden',
     maxHeight: 200,
-    padding: 10,
-    margin: 5, 
-    height: '40vw',
+    padding: 0,
+    // margin: '5 auto', 
+    height: '45vw',
     // display: 'flex',
-    // display: 'inline-block',
-    flexDirection: 'row wrap',
+    display: 'inline-block',
+    // flexDirection: 'row wrap',
+    
   },
   media: {
     height: 0,
-    paddingTop: '56.25%', // 16:9
+    paddingTop: '40.25%', // 16:
+    // backgroundSize: 'cover',
+    img: {
+      objectFit: 'cover',
+      height: '100%',
+      width: 'auto',
+      borderRadius: 10,
+    }
   },
 };
 class RssPageApi extends Component {
@@ -112,11 +132,13 @@ class RssPageApi extends Component {
       <div>
         <li>
         <Card className={classes.card}>
-          <CardMedia
+        <div style={{margin: '0 auto', borderRadius: '40', 'justify-content': "center"}}>
+          <CardMedia 
             className={classes.media}
             image={this.state.apiData.image} 
             title={this.state.apiData.title}
           />
+          </div>
           <CardContent>
             <Typography  style={{ fontSize: '10px', textAlign: 'center' }}  component="h2">
             {this.state.apiData.title}
