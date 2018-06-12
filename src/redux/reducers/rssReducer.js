@@ -1,7 +1,8 @@
-// import { combineReducers } from "redux";
+import { combineReducers } from "redux";
 import { RSS_ACTIONS } from '../actions/rssActions';
+import { API_ACTIONS } from '../actions/apiActions';
 
-// import {combineReducer} from 'redux';
+
 
 const initialState = {
     items: [],
@@ -16,7 +17,31 @@ const initialState = {
             return state
     }
 }
-export default rss;
+// export default rss;
+
+const nextState = {
+    data: [],
+}
+const api = (state = nextState, action) => {
+    switch (action.type) {
+        case API_ACTIONS.SAVE_API:
+            console.log(action.payload);
+            return {...state, data: [...action.payload]}
+        default:
+            return state
+    }
+}
+
+
+export default combineReducers({
+    rss,
+    api,
+})
+
+
+
+
+
 
 
 
@@ -34,34 +59,10 @@ export default rss;
 
 
 
-// const initialState = {
-//     items: [],
-//   };
-//   
-// const addRss = (state = [], action) => {
-//       console.log('rssReducer save success', action);
-//     switch (action.type) {
-//         case RSS_ACTIONS.SET_RSS:
-//             return action.payload
-//         default:
-//             return state;
-//     }
-// }
-
-
-// const addRss = (state = [], action) => {
-//     switch (action.type) {
-//         case RSS_ACTIONS.ADD_RSS:
-//             return action.payload
-//         default:
-//             return state; 
-//     }
-//     // console.log('rssReducer post success', action.payload);
-// }
 
 
 // export default combineReducers({
 //     rss,
-//     addRss,
+//     api,
 // })
 
