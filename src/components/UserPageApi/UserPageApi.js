@@ -1,11 +1,12 @@
+// React
 import React, { Component } from "react";
+
+// Redux
 import { connect } from "react-redux";
-// import axios from "axios";
 import { API_ACTIONS } from "../../redux/actions/apiActions";
-// react-moment
+
+// React-moment
 import Moment from 'react-moment';
-// import 'moment-timezone';
-// import moment from 'moment';
 
 //Material-ul-imports
 import PropTypes from 'prop-types';
@@ -78,9 +79,6 @@ componentDidMount() {
 logIt = () => {
   console.log('log it-----------> this.props:',this.state.api);
 }
-
-
-  
   handleExpandClick = () => {
     this.setState({ 
       expanded: !this.state.expanded
@@ -95,7 +93,6 @@ logIt = () => {
   render() {
 
   console.log('this.state.apiList:', this.state.apiList);
-// }
 
 
 const dataToFormat = (a,b) => {
@@ -124,9 +121,6 @@ const dataToFormat = (a,b) => {
           <CardContent>
             {/* <Typography component="p"> */}
             {data.author}<br/>
-       
-        {data.pubDate}  or  <br/>
-      
          <Moment fromNow>{data.pubDate}</Moment>
             {/* {data.description} */}
             {/* </Typography> */}
@@ -163,7 +157,6 @@ const dataToFormat = (a,b) => {
             </CardContent>
           </Collapse>
         </Card>
-
         </li>
         )})}
       </div>

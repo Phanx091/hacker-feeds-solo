@@ -1,6 +1,11 @@
+// React
 import React, { Component } from "react";
+
+// Redux
 import { connect } from "react-redux";
-// import axios from "axios";
+import { RSS_ACTIONS } from "../../redux/actions/rssActions";
+import { FEED_ACTIONS } from "../../redux/actions/feedActions";
+
 // Material-ui
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -10,13 +15,11 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import { RSS_ACTIONS } from "../../redux/actions/rssActions";
-import { API_ACTIONS } from "../../redux/actions/apiActions";
-
 
 const mapStateToProps = reduxState => ({
   rss: reduxState.rss,
-  api: reduxState.api
+  api: reduxState.api,
+  feed: reduxState.feed
 });
 
 const styles = {
@@ -52,31 +55,8 @@ class RssPageApi extends Component {
     };
   }
   componentDidMount() {
-    this.props.dispatch({type: API_ACTIONS.FETCH_API});
-    this.logThis();
-    // this.fetchFeedToApi();
+    this.props.dispatch({type: FEED_ACTIONS.FETCH_FEED});
   }
-
-  logThis() {
-    console.log(`this worksss`, this.props)
-  }
-
-  // fetchFeedToApi = () => {
-  //   const apiKey = 'aslzrjijkn6uvhmtk18wck8vhkadgl2iwdv2yejm';
-  //   axios
-  //   .get(
-  //     `https://api.rss2json.com/v1/api.json?rss_url=${this.props.feed.url}&api_key=${apiKey}&order_by=pubDate&order_dir=desc`)
-  //   .then(response => {
-  //     this.setState({
-  //       apiData: response.data
-  //     });
-  //     // console.log(this.state.apiData); this works
-  //     // console.log(`Success axios.get.API`, response.data); // display get data
-  //   })
-  //   .catch(error => {
-  //     console.log(`ERROR on axios.get.API`, error);
-  //   });
-  // }
   handleClickForAdd = () => {
     console.log('click add works');
   }
@@ -89,27 +69,30 @@ class RssPageApi extends Component {
     const { classes } = this.props;
     return (
       <div>
-        <li>
+        {this.props.feed.map((data, i) => {
+          return (
+            <li key={i}>
         <Card className={classes.card}>
         <div style={{margin: '0 auto', borderRadius: '40'}}>
           <CardMedia 
             className={classes.media}
-            image={this.state.apiData.image} 
-            title={this.state.apiData.title}
+            image={data.image} 
+            title={data.title}
           />
           </div>
           <CardContent>
-            <Typography  style={{ fontSize: '10px', textAlign: 'center' }}  component="h2">
-            {this.state.apiData.title}
+            <Typography style={{ fontSize: '10px', textAlign: 'center' }}  component="h2">
+            {data.title}
             </Typography>
           </CardContent>
           <CardActions>
-            <Button style={{ fontSize: '10px', padding: '0 20px',}} size="small" color="primary" onClick={() =>  { if (window.confirm('Are you sure you wish to delete this item?'))  this.handleClickForDelete(this.props.feed.id)}}>
+            <Button style={{ fontSize: '10px', padding: '0 20px',}} size="small" color="primary" onClick={() =>  { if (window.confirm('Are you sure you wish to delete this item?'))  this.handleClickForDelete(this.props.api.id)}}>
               Remove from List
             </Button>
           </CardActions>
         </Card>
         </li>
+      )})}
       </div>
     );
   }

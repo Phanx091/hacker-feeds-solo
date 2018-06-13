@@ -36,7 +36,6 @@ class AddRssPage extends Component {
   };
 
   render() {
-
     return (
       <div>
         <Nav />
