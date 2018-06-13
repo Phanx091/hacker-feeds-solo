@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import axios from "axios";
-// import { RSS_ACTIONS } from "../../redux/actions/rssActions";
+// import axios from "axios";
+import { API_ACTIONS } from "../../redux/actions/apiActions";
 // react-moment
 import Moment from 'react-moment';
 // import 'moment-timezone';
-import moment from 'moment';
+// import moment from 'moment';
 
 //Material-ul-imports
 import PropTypes from 'prop-types';
@@ -59,61 +59,28 @@ const styles = theme => ({
 });
 
 const mapStateToProps = reduxState => ({
-  rss: reduxState.rss
+  rss: reduxState.rss,
+  api: reduxState.api
 });
 class UserPageApi extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      apiData: [],
-      rss: [],
+      apiList: [],
     } 
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.rss !== this.state.rss) {
-      console.log(this.state.rss);
-        this.mapApiToFetchData();
-    }
-  }
+componentDidMount() {
+  this.props.dispatch({type: API_ACTIONS.FETCH_API});
+  this.logIt();
+}
 
-  componentDidMount() {
-    // this.props.dispatch({type: RSS_ACTIONS.FETCH_RSS});
-    this.setState({
-      rss: this.props.rss,
-    });
-    this.logIt();
-  }
+logIt = () => {
+  console.log('log it-----------> this.props:',this.state.api);
+}
 
 
-  mapApiToFetchData() {
-    console.log('mapApiToFetchData:', this.props.rss);
-    this.state.rss.forEach(data => {
-      this.fetchApi(data.url)
-    });
-  }
   
-  fetchApi = (url) => {
-    const apiKey = 'aslzrjijkn6uvhmtk18wck8vhkadgl2iwdv2yejm';
-    axios
-    .get(
-      `https://api.rss2json.com/v1/api.json?rss_url=${url}&api_key=${apiKey}&order_by=pubDate&order_dir=desc`)
-    .then(response => {
-      console.log('LOOK AT ME!!!!!', response);
-      this.setState({
-        apiData: [ ...this.state.apiData, ...response.data],
-      });
-      console.log('fetchAPI response', response)
-      this.logIt();
-    })
-    .catch(error => {
-      console.log(`ERROR on axios.get.API`, error);
-    });
-  }
-  
-  logIt = () => {
-    console.log('log it-----------> this.props:',this.props.rss);
-  }
   handleExpandClick = () => {
     this.setState({ 
       expanded: !this.state.expanded
@@ -126,22 +93,23 @@ class UserPageApi extends Component {
       });
   }
   render() {
-    // let obj = [...this.state.apiData];
-    // obj.sort((a, b) => a.pubDate > b.pubDate)
-    // obj.map((item, i) =>(<div key={i}> {item.pubDate}</div>))
-  const dataToFormat = (a, b) => {
-    return moment((a, b) => a.pubDate - b.pubDate).format('YYYY/MM/DD');
-  }
 
-  console.log(`Success axios.get.API`, this.state.apiData);
+  console.log('this.state.apiList:', this.state.apiList);
+// }
+
+
+const dataToFormat = (a,b) => {
+  let dateA = new Date(a.pubDate);
+  let dateB = new Date(b.pubDate);
+  return dateB - dateA;
+}
   const { classes } = this.props;
     return (
       <div>
-        {this.state.apiData.sort(dataToFormat).map((data, i) => {
+        {this.props.api.sort(dataToFormat).map((data, i) => {
           return (
           <li key={i}>
         <Card className={classes.card}>
-     
           <CardHeader 
             action={
               <IconButton>

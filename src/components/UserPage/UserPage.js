@@ -4,7 +4,7 @@ import { fetchUser } from "../../redux/actions/userActions";
 import Nav from "../../components/Nav/Nav";
 // import { RSS_ACTIONS } from "../../redux/actions/rssActions";
 import UserPageApi from "../UserPageApi/UserPageApi";
-import { API_ACTIONS } from '../../redux/actions/apiActions';
+// import { API_ACTIONS } from '../../redux/actions/apiActions';
 
 
 const mapStateToProps = reduxState => ({
@@ -15,7 +15,7 @@ const mapStateToProps = reduxState => ({
 class UserPage extends Component {
   componentDidMount() {
     this.props.dispatch(fetchUser());
-    this.getItems();
+    // this.getItems();
   }
 
   componentDidUpdate() {
@@ -24,9 +24,9 @@ class UserPage extends Component {
     }
   }
 
-  getItems() {
-    this.props.dispatch({type: API_ACTIONS.FETCH_API});
-  }
+  // getItems() {
+  //   this.props.dispatch({type: API_ACTIONS.FETCH_API});
+  // }
 
   // logout = () => {
   //   this.props.dispatch(triggerLogout());

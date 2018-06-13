@@ -3,17 +3,18 @@ import { connect } from "react-redux";
 import { fetchUser } from "../../redux/actions/userActions";
 import Nav from "../../components/Nav/Nav";
 import { triggerLogout } from "../../redux/actions/loginActions";
-import RssPageApi from "../RssPageApi/RssPageApi";
-import { RSS_ACTIONS } from "../../redux/actions/rssActions";
+// import RssPageApi from "../RssPageApi/RssPageApi";
+// import { API_ACTIONS } from "../../redux/actions/apiActions";
+// import { RSS_ACTIONS } from "../../redux/actions/rssActions";
 
 const mapStateToProps = reduxState => ({
   user: reduxState.user,
-  rss: reduxState.rss
+
 });
 class RssPage extends Component {
   componentDidMount() {
     this.props.dispatch(fetchUser());
-    this.getItems();
+    // this.getItems();
   }
   componentDidUpdate() {
     if (!this.props.user.isLoading && this.props.user.userName === null) {
@@ -22,9 +23,9 @@ class RssPage extends Component {
 
 
   }
-  getItems() {
-    this.props.dispatch({type: RSS_ACTIONS.FETCH_RSS})
-  }
+  // getItems() {
+  //   this.props.dispatch({type: API_ACTIONS.FETCH_API})
+  // }
   // handleClickForDelete = (id) => {
   //   axios.delete(`/api/rss/${id}`, config).then(() => {
   //   }).catch(error => {
@@ -39,7 +40,7 @@ class RssPage extends Component {
 
   render() {
     let content = null;
-    const {rss} = this.props
+    // const {rss} = this.props
     if (this.props.user.userName) {
       content = (
         <div>
@@ -53,11 +54,11 @@ class RssPage extends Component {
       <div>
         <Nav />
         {content}
-        <ul>
+        {/* <ul>
             {rss.map(feed => (
               <RssPageApi key={feed.id} feed={feed}/>
             ))}
-        </ul>
+        </ul> */}
       </div>
     );
   }
