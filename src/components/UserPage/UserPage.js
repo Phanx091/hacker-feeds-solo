@@ -2,19 +2,19 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchUser } from "../../redux/actions/userActions";
 import Nav from "../../components/Nav/Nav";
-import { RSS_ACTIONS } from "../../redux/actions/rssActions";
+// import { RSS_ACTIONS } from "../../redux/actions/rssActions";
 import UserPageApi from "../UserPageApi/UserPageApi";
+import { API_ACTIONS } from '../../redux/actions/apiActions';
 
 
-const mapStateToProps = state => ({
-  user: state.user,
-  rss: state.rss.items
+const mapStateToProps = reduxState => ({
+  user: reduxState.user,
+  // rss: state.rss.items
 });
 
 class UserPage extends Component {
   componentDidMount() {
     this.props.dispatch(fetchUser());
-    // this.prop.dispatch({type: RSS_ACTIONS.FETCH_RSS});
     this.getItems();
   }
 
@@ -25,15 +25,15 @@ class UserPage extends Component {
   }
 
   getItems() {
-    this.props.dispatch({type: RSS_ACTIONS.FETCH_RSS})
+    this.props.dispatch({type: API_ACTIONS.FETCH_API});
   }
+
   // logout = () => {
   //   this.props.dispatch(triggerLogout());
   //   // this.props.history.push('home');
   // };
 
   render() {
-    const {rss} = this.props;
     let content = null;
 
     if (this.props.user.userName) {
@@ -41,7 +41,7 @@ class UserPage extends Component {
         <div>
           <h1 id="welcome">Welcome, {this.props.user.userName}!</h1>
         <ul>
-            {rss.map(feeds => <UserPageApi key={feeds.id} feed={feeds} />)}
+            <UserPageApi/>
         </ul>
         </div>
       );

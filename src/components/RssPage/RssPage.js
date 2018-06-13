@@ -6,9 +6,9 @@ import { triggerLogout } from "../../redux/actions/loginActions";
 import RssPageApi from "../RssPageApi/RssPageApi";
 import { RSS_ACTIONS } from "../../redux/actions/rssActions";
 
-const mapStateToProps = state => ({
-  user: state.user,
-  rss: state.rss.items,
+const mapStateToProps = reduxState => ({
+  user: reduxState.user,
+  rss: reduxState.rss
 });
 class RssPage extends Component {
   componentDidMount() {
@@ -44,7 +44,7 @@ class RssPage extends Component {
       content = (
         <div>
           <h1 id="welcome">Welcome, {this.props.user.userName}!</h1>
-          {/* {JSON.stringify(this.state.url)} */}
+          
           <pre>{JSON.stringify(this.props.reduxState)}</pre>
         </div>
       );

@@ -420,7 +420,7 @@ class Nav extends React.Component {
           </IconButton>
         </div>
         <div className={classes.root}>
-          <List component="NAV">
+          <List component="nav">
             <ListItem button component="a" href="/user">
               <ListItemText primary="Home" />
             </ListItem>

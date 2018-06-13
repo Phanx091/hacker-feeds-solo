@@ -12,21 +12,9 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { RSS_ACTIONS } from "../../redux/actions/rssActions";
 
-
-// `https://api.rss2json.com/v1/api.json?rss_url=${this.props.feed.url}`)
 const mapStateToProps = reduxState => ({
-  reduxState
+  rss: reduxState.rss
 });
-
-
-// background-color: #dbd5d5;
-// width: 90% auto;
-// height: 100px;
-// margin: 20px auto;
-// padding: 25px;
-// border-radius: 2px;
-// }
-
 
 const styles = {
   card: {
@@ -45,7 +33,6 @@ const styles = {
   media: {
     height: 0,
     paddingTop: '40.25%', // 16:
-    // backgroundSize: 'cover',
     img: {
       objectFit: 'cover',
       height: '100%',
@@ -65,7 +52,6 @@ class RssPageApi extends Component {
     this.fetchFeedToApi();
   }
 
-
   fetchFeedToApi = () => {
     const apiKey = 'aslzrjijkn6uvhmtk18wck8vhkadgl2iwdv2yejm';
     axios
@@ -73,7 +59,7 @@ class RssPageApi extends Component {
       `https://api.rss2json.com/v1/api.json?rss_url=${this.props.feed.url}&api_key=${apiKey}&order_by=pubDate&order_dir=desc`)
     .then(response => {
       this.setState({
-        apiData: response.data.feed
+        apiData: response.data
       });
       // console.log(this.state.apiData); this works
       // console.log(`Success axios.get.API`, response.data); // display get data
@@ -89,50 +75,14 @@ class RssPageApi extends Component {
     console.log('click delete works');
     this.props.dispatch({type: RSS_ACTIONS.DELETE_RSS, id});
     this.props.dispatch({type: RSS_ACTIONS.FETCH_RSS})
-
-      // axios.delete(`/api/rss/${id}`).then((results) => {
-      //   this.fetchFeedToApi();
-      //   console.log('successful on delete', results)
-      // }).catch(error => {
-      //   throw error;
-      // });
   }
-//   render() {
-//     return (
-//       <li>
-//         {/* {JSON.stringify(this.state)} */}
-//         <div
-//           style={{
-//             textAlign: "center",
-//             margin: "10px",
-//             padding: "10px",
-//             border: "1px solid black"
-//           }}>
-//           <img
-//             style={{ width: "150px", height: "150px" }}
-//             src={this.state.apiData.image}
-//             alt={this.state.apiData.description}
-//           />
-//           <br />
-//           {this.state.apiData.title}
-//           <br />
-//           <button onClick={this.handleClickForDelete()}>delete</button>
-//         </div>
-//       </li>
-//     );
-//   }
-// }
-
-// export default connect(mapStateToProps)(RssPageApi);
-
-
   render() {
     const { classes } = this.props;
     return (
       <div>
         <li>
         <Card className={classes.card}>
-        <div style={{margin: '0 auto', borderRadius: '40', 'justify-content': "center"}}>
+        <div style={{margin: '0 auto', borderRadius: '40'}}>
           <CardMedia 
             className={classes.media}
             image={this.state.apiData.image} 

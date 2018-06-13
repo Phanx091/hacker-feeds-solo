@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { RSS_ACTIONS } from '../../redux/actions/rssActions';
-import RssPageApi from "../RssPageApi/RssPageApi";
 // import axios from 'axios';
 
 import Nav from "../../components/Nav/Nav";
 
-const mapStateToProps = state => ({
-  user: state.user,
-  rss: state.rss.items,
+const mapStateToProps = reduxToState => ({
+  user: reduxToState.user,
+  rss: reduxToState.rss
 });
 class AddRssPage extends Component {
   constructor(props) {
@@ -37,7 +36,7 @@ class AddRssPage extends Component {
   };
 
   render() {
-    const {rss} = this.props;
+
     return (
       <div>
         <Nav />
@@ -50,11 +49,11 @@ class AddRssPage extends Component {
           />
             <button onClick={this.handleClickForRSS}> Add </button>
         </form>
-        <ul>
+        {/* <ul>
             {rss.map(feed => (
               <RssPageApi key={feed.id} feed={feed}/>
             ))}
-        </ul>
+        </ul> */}
       
       </div>
     );
