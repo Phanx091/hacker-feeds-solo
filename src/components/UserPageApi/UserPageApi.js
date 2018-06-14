@@ -26,6 +26,8 @@ import DoneIcon from '@material-ui/icons/Done';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+// import { EHOSTUNREACH } from "constants";
+
 
 /// Material-ul-const
 const styles = theme => ({
@@ -41,9 +43,9 @@ const styles = theme => ({
     paddingTop: '56.25%', // 16:9
   },
 
-  actions: {
-    display: 'flex',
-  },
+  // actions: {
+  //   display: 'flex',
+  // },
   expand: {
     transform: 'rotate(0deg)',
     transition: theme.transitions.create('transform', {
@@ -68,6 +70,9 @@ class UserPageApi extends Component {
     super(props);
     this.state = {
       apiList: [],
+      expanded: false,
+      icon: false,
+      favorite: []
     } 
   }
 
@@ -84,12 +89,21 @@ logIt = () => {
       expanded: !this.state.expanded
     })   
   };
-  handleAddFavorites = () => {
-    console.log('add to favorite click handler', this.state.icon);
-    this.setState({
-      icon: !this.state.icon
+
+
+
+  handleAddFavorites = (event) => {
+    
+      this.setState({
+        favorite: event.target.value,
       });
+       console.log('favorite');
+        
   }
+
+
+
+
   render() {
 
   console.log('this.state.apiList:', this.state.apiList);
@@ -106,6 +120,8 @@ const dataToFormat = (a,b) => {
         {this.props.api.sort(dataToFormat).map((data, i) => {
           return (
           <li key={i}>
+
+
         <Card className={classes.card}>
           <CardHeader 
             action={
@@ -113,36 +129,32 @@ const dataToFormat = (a,b) => {
                 <MoreVertIcon />
               </IconButton>
             } 
-            title={data.title}
-          />  
-          <CardMedia
-            className={classes.media}
-            image={data.thumbnail}/>
+            title={data.title}/>  
+          <CardMedia className={classes.media} image={data.thumbnail}/>
+
           <CardContent>
-            {/* <Typography component="p"> */}
-            {data.author}<br/>
+          {data.author}<br/>
          <Moment fromNow>{data.pubDate}</Moment>
-            {/* {data.description} */}
-            {/* </Typography> */}
           </CardContent>
+
           <CardActions className={classes.actions} disableActionSpacing>
             <IconButton aria-label="Add to favorites" onClick={this.handleAddFavorites}>
               {this.state.icon ? <FavoriteIcon /> : <DoneIcon/>}
             </IconButton>
+
             <IconButton aria-label="Share">
               <ShareIcon />
             </IconButton>
+
             <IconButton
-              className={classnames(classes.expand, {
-                [classes.expandOpen]: this.state.expanded,
-              })}
+              className={classnames(classes.expand, {[classes.expandOpen]: this.state.expanded,})}
               onClick={this.handleExpandClick}
               aria-expanded={this.state.expanded}
-              aria-label="Show more"
-            >
+              aria-label="Show more">
               <ExpandMoreIcon />
             </IconButton>
           </CardActions>
+
           <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
             <CardContent>
               <Typography paragraph variant="body2">

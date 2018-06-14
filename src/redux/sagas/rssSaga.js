@@ -4,18 +4,19 @@ import { callGetRss, callPostRss, callDeleteRss} from '../requests/rssRequest'; 
 import { USER_ACTIONS } from '../actions/userActions';
 import { callUser } from '../requests/userRequests';
 import { RSS_ACTIONS } from '../actions/rssActions';
+
 // import axios from 'axios';
 
 
 function* postRSSForm(action) {
   try {
     const formPost = yield callPostRss(action.payload);
-
     console.log('FormPost.post saga.axios success', formPost);
     yield dispatch({
       type: RSS_ACTIONS.ADD_RSS,
       payload: formPost
     })
+    console.log(`FORM POST`,formPost)
   } catch (error) {
   }
 }
@@ -45,6 +46,7 @@ function* rssFeedItems() {
 function* deleteRssItems(payload) {
   const { id } = payload;
   try {
+    // console.log('delete', payload);
     const itemDeleted = yield callDeleteRss(id);
     console.log('itemDeleted.delete saga.axios success', itemDeleted);
     yield dispatch({

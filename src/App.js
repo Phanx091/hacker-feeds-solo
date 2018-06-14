@@ -18,12 +18,6 @@ import RssPage from './components/RssPage/RssPage';
 import './styles/main.css';
 
 
-
-
-
-
-
-
 const App = () => (
   <div>
     <Header className="title" title="<Hacker_Feeds/>" />

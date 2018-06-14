@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { RSS_ACTIONS } from '../../redux/actions/rssActions';
 // import axios from 'axios';
-
 import Nav from "../../components/Nav/Nav";
+
 
 const mapStateToProps = reduxToState => ({
   user: reduxToState.user,
@@ -48,7 +48,25 @@ class AddRssPage extends Component {
           />
             <button onClick={this.handleClickForRSS}> Add </button>
         </form>
-        {/* <ul>
+        <b>Recommend RSS</b>
+
+        <form>
+            
+        </form>
+
+        <form>
+            
+        </form>
+
+        <form>
+            
+        </form>
+
+        <form>
+         
+           
+        </form> 
+         {/* <ul>
             {rss.map(feed => (
               <RssPageApi key={feed.id} feed={feed}/>
             ))}

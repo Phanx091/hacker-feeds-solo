@@ -5,18 +5,23 @@ export function callPostRss(payload) {
     const body = ({
         url: payload.url
     })
-//   return axios.post('/api/rss', body)
-//     .then(response => response.data)
-//     .catch((error) => {
-//       throw error.response || error;
-//     });
+    // const config = {
+    //     headers: { 'Content-Type': 'application/json' },
+    //     withCredentials: true,
+    //   };
+        //   return axios.post('/api/rss', body, config)
+        //     .then(response => response)
+        //     .catch((error) => {
+        //       throw error.response || error;
+        //     });
   axios({
       method: "POST",
       url: "/api/rss",
       data: body,
   }).then((response) => {
       console.log('payload success!', response);
-  }).catch((error) => {
+  })
+  .catch((error) => {
       alert('Error on axios post');
   });
 }

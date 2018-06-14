@@ -54,15 +54,17 @@ class RssPageApi extends Component {
       apiData: []
     };
   }
+
+
+
   componentDidMount() {
     this.props.dispatch({type: FEED_ACTIONS.FETCH_FEED});
+    this.props.dispatch({type: RSS_ACTIONS.FETCH_RSS})
   }
-  handleClickForAdd = () => {
-    console.log('click add works');
-  }
+ 
   handleClickForDelete = (id) => {
-    console.log('click delete works');
-    this.props.dispatch({type: RSS_ACTIONS.DELETE_RSS, id});
+    console.log('click delete works', this.props);
+    this.props.dispatch({type: RSS_ACTIONS.DELETE_RSS, id:id});
     this.props.dispatch({type: RSS_ACTIONS.FETCH_RSS})
   }
   render() {
@@ -86,7 +88,7 @@ class RssPageApi extends Component {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button style={{ fontSize: '10px', padding: '0 20px',}} size="small" color="primary" onClick={() =>  { if (window.confirm('Are you sure you wish to delete this item?'))  this.handleClickForDelete(this.props.api.id)}}>
+            <Button style={{ fontSize: '10px', padding: '0 20px',}} size="small" color="primary" onClick={() =>  { if (window.confirm('Are you sure you wish to delete this item?'))  this.handleClickForDelete(this.props.rss[i].id)}}>
               Remove from List
             </Button>
           </CardActions>
