@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { triggerLogin, formError, clearError } from '../../redux/actions/loginActions';
-import Nav from "../../components/Nav/Nav";
 import './LoginPageCss.css';
 
 
@@ -64,32 +63,32 @@ class LoginPage extends Component {
 
   render() {
     return (
+
       <div>
-        <Nav/>
+
+        <div class="title">
+        <h1>Hacker_feeds</h1>
+        </div>
         { this.renderAlert() }
-        <form className="formLogin" onSubmit={this.login}>
+        <form className="loginBox" onSubmit={this.login}>
           <h1>Login</h1>
           <div>
-            <label htmlFor="username">
-              Username:
+              <h2>Username:</h2>
               <input
                 type="text"
                 name="username"
                 value={this.state.username}
                 onChange={this.handleInputChangeFor('username')}
               />
-            </label>
           </div>
           <div>
-            <label htmlFor="password">
-              Password:
+              <h2>Password:</h2>
               <input
                 type="password"
                 name="password"
                 value={this.state.password}
                 onChange={this.handleInputChangeFor('password')}
               />
-            </label>
           </div>
           <div>
             <input
@@ -104,5 +103,4 @@ class LoginPage extends Component {
     );
   }
 }
-
 export default connect(mapStateToProps)(LoginPage);

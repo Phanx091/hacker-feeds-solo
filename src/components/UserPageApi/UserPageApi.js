@@ -21,11 +21,13 @@ import Collapse from '@material-ui/core/Collapse';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import red from '@material-ui/core/colors/red';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import DoneIcon from '@material-ui/icons/Done';
-import ShareIcon from '@material-ui/icons/Share';
+// import FavoriteIcon from '@material-ui/icons/Favorite';
+// import DoneIcon from '@material-ui/icons/Done';
+// import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import SimpleModal from '../Modals/Modals';
+import FavoriteIconButton from '../FavIcon/FavIcon';
 // import { EHOSTUNREACH } from "constants";
 
 
@@ -70,6 +72,7 @@ class UserPageApi extends Component {
     super(props);
     this.state = {
       apiList: [],
+      expanded: false,
 
     } 
   }
@@ -90,15 +93,15 @@ logIt = () => {
 
 
 
-  handleAddFavorites = (event) => {
+  // handleAddFavorites = (event) => {
     
-      this.setState({
-        icon: true,
-        favorite: event.target.value,
-      });
-       console.log('favorite');
+  //     this.setState({
+  //       icon: true,
+  //       favorite: event.target.value,
+  //     });
+  //      console.log('favorite');
         
-  }
+  // }
 
 
 
@@ -129,7 +132,7 @@ const dataToFormat = (a,b) => {
               </IconButton>
             } 
             title={data.title}/>  
-          <CardMedia className={classes.media} image={data.thumbnail}/>
+          <CardMedia className={classes.media} image={data.thumbnail} />
 
           <CardContent>
           {data.author}<br/>
@@ -137,12 +140,16 @@ const dataToFormat = (a,b) => {
           </CardContent>
 
           <CardActions className={classes.actions} disableActionSpacing>
-            <IconButton aria-label="Add to favorites" onClick={this.handleAddFavorites}>
+            {/* <IconButton aria-label="Add to favorites" onClick={this.handleAddFavorites}>
               {this.state.icon ? <FavoriteIcon /> : <DoneIcon/>}
-            </IconButton>
+            </IconButton> */}
+            <FavoriteIconButton favorite={data}/>
+             {/* <IconButton aria-label="Add to favorites" onClick={this.handleAddFavorites}>
+              {this.state.icon ? <FavoriteIcon /> : <DoneIcon/>}
+            </IconButton> */}
 
             <IconButton aria-label="Share">
-              <ShareIcon />
+            <SimpleModal link={data.link}/>  
             </IconButton>
 
             <IconButton

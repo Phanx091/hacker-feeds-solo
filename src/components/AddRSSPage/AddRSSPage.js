@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { RSS_ACTIONS } from '../../redux/actions/rssActions';
-// import axios from 'axios';
+import axios from 'axios';
 import Nav from "../../components/Nav/Nav";
+import List from "../list/list";
+
 
 const mapStateToProps = reduxToState => ({
   user: reduxToState.user,
@@ -12,6 +14,7 @@ class AddRssPage extends Component {
   constructor(props) {
     super(props);
     this.state = ''
+
   }
   componentWillReceiveProps(nextProps) {
     if (nextProps.user.userName) {
@@ -34,41 +37,43 @@ class AddRssPage extends Component {
     console.log(event.target.value);
   };
 
+
+ 
+
+
+
   render() {
+
+    
     return (
+    
       <div>
         <Nav />
         <form>
-          <h3>ADD RSS PAGE</h3>
+       
+          {/* {(JSON.stringify(this.state.recommendList))} */}
           <input
             onChange={this.handleChangeForRSS}
             name="url"
             placeholder="RSS URL HERE"
           />
-            <button onClick={this.handleClickForRSS}> Add </button>
+           
+          {/* <div style={{textAlign: 'center', margin: '20px'}}>
+            <p style={{opacity: 0.5}}></p> */}
+
+          <button onClick={this.handleClickForRSS}> Add </button>
+          {/* </div> */}
+
         </form>
         <b>Recommend RSS</b>
 
-        <form>
+        <div>
+          <List/>
+         
+       </div>
 
-        </form>
 
-        <form>
-            
-        </form>
 
-        <form>
-            
-        </form>
-
-        <form>
-           
-        </form> 
-         {/* <ul>
-            {rss.map(feed => (
-              <RssPageApi key={feed.id} feed={feed}/>
-            ))}
-        </ul> */}
       
       </div>
     );

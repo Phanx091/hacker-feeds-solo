@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchUser } from '../../redux/actions/userActions';
 import Nav from '../../components/Nav/Nav';
-import axios from 'axios';
+// import axios from 'axios';
+
 
 // import { USER_ACTIONS } from '../../redux/actions/userActions';
 
@@ -20,19 +21,19 @@ class RssList extends Component { // also the page where you cab favorite articl
   }
 
 
-  getRecommendRss = () => {
-    axios.get(`/api/rss/recommend/${true}`)
-        .then((response) => {
-            console.log('success on getRecommendRss:', response)
-            console.log(response.data);
-            this.setState({
-              recommendList: response.data,
-            });
-        })
-        .catch((error) => {
-            console.log('error on : getRecommendRss', error);
-        })
-    }
+  // getRecommendRss = () => {
+  //   axios.get(`/api/rss/recommend/${true}`)
+  //       .then((response) => {
+  //           console.log('success on getRecommendRss:', response)
+  //           console.log(response.data);
+  //           this.setState({
+  //             recommendList: response.data,
+  //           });
+  //       })
+  //       .catch((error) => {
+  //           console.log('error on : getRecommendRss', error);
+  //       })
+  //   }
 
 
 
@@ -56,6 +57,7 @@ class RssList extends Component { // also the page where you cab favorite articl
   render() {
     let content = null;
 
+
     if (this.props.user.userName) {
       content = (
         // <div className ="Recommend">
@@ -64,6 +66,7 @@ class RssList extends Component { // also the page where you cab favorite articl
 
         <div>
           <p>
+           
             RssList
           </p>
         </div>
@@ -78,6 +81,7 @@ class RssList extends Component { // also the page where you cab favorite articl
     );
   }
 }
+
 
 // this allows us to use <App /> in index.js
 export default connect(mapStateToProps)(RssList);

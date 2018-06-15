@@ -13,13 +13,14 @@ import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
+// import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 const mapStateToProps = reduxState => ({
   rss: reduxState.rss,
-  api: reduxState.api
+  api: reduxState.api,
+  feed: reduxState.feed,
 });
 
 const styles = {
@@ -59,17 +60,19 @@ class RssPageApi extends Component {
 
   componentDidMount() {
     this.props.dispatch({type: API_ACTIONS.FETCH_API}); // fetch data to display on dom 
+    this.props.dispatch({type: RSS_ACTIONS.FETCH_RSS});
   }
 
   handleClickForDelete = (id) => {
     console.log('click delete works', this.props);
     this.props.dispatch({type: RSS_ACTIONS.DELETE_RSS, id});
   }
+
   render() {
     const { classes } = this.props;
     return (
       <div>
-      {/* <p>this.props.feed: {JSON.stringify(this.props.feed)}</p> */}
+      {/* <p>this.props.feed: {JSON.stringify(this.props.api.feed)}</p> */}
       {/* <p>this.props.rss: {JSON.stringify(this.props.rss)}</p> */}
         {this.props.rss.map((data, i) => {
           return (
@@ -77,10 +80,10 @@ class RssPageApi extends Component {
               <Card className={classes.card}>
               <div style={{margin: '0 auto', borderRadius: '40'}}>
               {/* {JSON.stringify(data)} */}
-                <CardMedia 
+                {/* <CardMedia 
                 className={classes.media}
-                image={data.image}
-                title={data.title}/>
+                image={data.thumbnail}
+                title={data.title}/> */}
                 {data.url}
                 </div>
                 <CardContent>

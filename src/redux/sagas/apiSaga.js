@@ -3,7 +3,7 @@ import { callApiToFetchData  } from '../requests/apiRequest';
 import { callGetRss } from '../requests/rssRequest';
 import { API_ACTIONS } from '../actions/apiActions';
 import { put as dispatch } from 'redux-saga/effects';
-import { RSS_ACTIONS } from '../actions/rssActions';
+// import { RSS_ACTIONS } from '../actions/rssActions';
 
 
 // get api call 

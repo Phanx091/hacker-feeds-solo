@@ -470,7 +470,7 @@ class Nav extends React.Component {
                 <MenuIcon />
               </IconButton>
               <Typography variant="title" styles="text-align: center" color="inherit" noWrap>
-              <div dangerouslySetInnerHTML={{__html:'< Hacker_Feeds / >'}}/>
+              {/* <div dangerouslySetInnerHTML={{__html:'< Hacker_Feeds / >'}}/> */}
               </Typography>
             </Toolbar>
           </AppBar>

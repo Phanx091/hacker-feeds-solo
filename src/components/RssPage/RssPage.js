@@ -5,6 +5,7 @@ import Nav from "../../components/Nav/Nav";
 import RssPageApi from "../RssPageApi/RssPageApi";
 
 
+
 const mapStateToProps = reduxState => ({
   user: reduxState.user,
 });
@@ -25,7 +26,8 @@ class RssPage extends Component {
         <div>
           <h1 id="welcome">Welcome, {this.props.user.userName}!</h1>
         <ul>
-          <RssPageApi/>
+
+      <RssPageApi/>
         </ul>
         </div>
       );
@@ -34,6 +36,7 @@ class RssPage extends Component {
       <div>
         <Nav />
         {content}
+   
       </div>
     );
   }

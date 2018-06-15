@@ -19,20 +19,14 @@ router.get('/', (req, res) => {
     }
 }); // end of router.get'
 // ROUTER.get.RECOMMEND RSS URL
-router.get('/recommend/:id', (req, res) => {
-    if(req.isAuthenticated()) {
-        console.log(`router.get: ${req.body}`);
-        console.log(`router.get USER: ${req.user}`);
-        console.log('is authenticated?', req.isAuthenticated());
-        let queryText = `SELECT * FROM "recommendList" WHERE person_id = $1;`;
-        pool.query(queryText, [req.user.id]).then((result) => {
+router.get('/recommend/', (req, res) => {
+        let queryText = `SELECT * FROM "rsslinks"`;
+        pool.query(queryText).then((result) => {
             res.send(result.rows);
         }).catch((error) => {
             console.log(`ERROR trying to GET /api/rss: ${error}`);
         });
-    } else {
-        res.sendStatus(403);
-    }
+
 }); // end of router.get.RECOMMEND RSS URL
 // ROUTER.post
 router.post('/', (req, res) => {

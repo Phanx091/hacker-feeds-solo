@@ -136,12 +136,12 @@ class Simplert extends React.Component {
       }
     
       // Event
-      closeSimplert (e) {
-        let { onClose } = this.props
-        e.preventDefault()
-        this.setState({ isShowPopup: false })
-        if (onClose) onClose()
-      }
+    //   closeSimplert (e) {
+    //     let { onClose } = this.props
+    //     e.preventDefault()
+    //     this.setState({ isShowPopup: false })
+    //     if (onClose) onClose()
+    //   }
     
       confirmSimplert (e) {
         let { onConfirm } = this.props
@@ -150,72 +150,72 @@ class Simplert extends React.Component {
         if (onConfirm) onConfirm()
       }
     
-      closeOverlaySimplert (e) {
-        let { disableOverlayClick, onClose, onOverlayClose } = this.props
-        if (
-          e.target.className.indexOf('simplert--shown') > 0 &&
-          !disableOverlayClick
-        ) {
-          this.setState({ isShowPopup: false })
-          if (onOverlayClose) {
-            onOverlayClose()
-          } else if (onClose) {
-            onClose()
-          }
-        }
-      }
+    //   closeOverlaySimplert (e) {
+    //     let { disableOverlayClick, onClose, onOverlayClose } = this.props
+    //     if (
+    //       e.target.className.indexOf('simplert--shown') > 0 &&
+    //       !disableOverlayClick
+    //     ) {
+    //       this.setState({ isShowPopup: false })
+    //       if (onOverlayClose) {
+    //         onOverlayClose()
+    //       } else if (onClose) {
+    //         onClose()
+    //       }
+    //     }
+    //   }
     }
     
     // The Props
-    Simplert.propTypes = {
-      showSimplert: PropTypes.bool.isRequired,
-      title: PropTypes.string,
-      message: PropTypes.any,
-      type: PropTypes.string,
-      customClass: PropTypes.string,
-      customIconUrl: PropTypes.string,
-      onOpen: PropTypes.func,
-      customCloseBtnText: PropTypes.string,
-      customCloseBtnClass: PropTypes.string,
-      onClose: PropTypes.func,
-      onOverlayClose: PropTypes.func,
-      useConfirmBtn: PropTypes.bool,
-      customConfirmBtnText: PropTypes.string,
-      customConfirmBtnClass: PropTypes.string,
-      onConfirm: PropTypes.func,
-      disableOverlayClick: PropTypes.bool,
-      hideAllButton: PropTypes.bool
-    }
+    // Simplert.propTypes = {
+    //   showSimplert: PropTypes.bool.isRequired,
+    //   title: PropTypes.string,
+    //   message: PropTypes.any,
+    //   type: PropTypes.string,
+    //   customClass: PropTypes.string,
+    //   customIconUrl: PropTypes.string,
+    //   onOpen: PropTypes.func,
+    //   customCloseBtnText: PropTypes.string,
+    //   customCloseBtnClass: PropTypes.string,
+    //   onClose: PropTypes.func,
+    //   onOverlayClose: PropTypes.func,
+    //   useConfirmBtn: PropTypes.bool,
+    //   customConfirmBtnText: PropTypes.string,
+    //   customConfirmBtnClass: PropTypes.string,
+    //   onConfirm: PropTypes.func,
+    //   disableOverlayClick: PropTypes.bool,
+    //   hideAllButton: PropTypes.bool
+    // }
     
-    const DEFAULT_TYPE = 'info'
-    const DEFAULT_BTN_CLOSE_TEXT = 'Close'
-    const DEFAULT_BTN_CONFIRM_TEXT = 'Confirm'
+    // const DEFAULT_TYPE = 'info'
+    // const DEFAULT_BTN_CLOSE_TEXT = 'Close'
+    // const DEFAULT_BTN_CONFIRM_TEXT = 'Confirm'
     // const INVALID_TYPE = 'INVALID_TYPE'
     
-    Simplert.defaultProps = {
-      // hide/show alert
-      showSimplert: false,
-      // basic setup
-      title: '',
-      message: '',
-      type: DEFAULT_TYPE, // info (default), success, warning, error
-      customClass: '',
-      customIconUrl: '',
-      // open event
-      onOpen: null,
-      // close button
-      customCloseBtnText: DEFAULT_BTN_CLOSE_TEXT,
-      customCloseBtnClass: '',
-      onClose: null,
-      onOverlayClose: null,
-      // confirm button
-      useConfirmBtn: false,
-      customConfirmBtnText: DEFAULT_BTN_CONFIRM_TEXT,
-      customConfirmBtnClass: '',
-      onConfirm: null,
-      // disabled overlay
-      disableOverlayClick: false,
-      hideAllButton: false
-    }
+    // Simplert.defaultProps = {
+    //   // hide/show alert
+    //   showSimplert: false,
+    //   // basic setup
+    //   title: '',
+    //   message: '',
+    //   type: DEFAULT_TYPE, // info (default), success, warning, error
+    //   customClass: '',
+    //   customIconUrl: '',
+    //   // open event
+    //   onOpen: null,
+    //   // close button
+    //   customCloseBtnText: DEFAULT_BTN_CLOSE_TEXT,
+    //   customCloseBtnClass: '',
+    //   onClose: null,
+    //   onOverlayClose: null,
+    //   // confirm button
+    //   useConfirmBtn: false,
+    //   customConfirmBtnText: DEFAULT_BTN_CONFIRM_TEXT,
+    //   customConfirmBtnClass: '',
+    //   onConfirm: null,
+    //   // disabled overlay
+    //   disableOverlayClick: false,
+    //   hideAllButton: false
+    // }
     
     export default Simplert

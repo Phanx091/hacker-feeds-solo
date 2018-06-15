@@ -6,7 +6,7 @@ import {
   Switch,
 } from 'react-router-dom';
 
-import Header from './components/Header/Header';
+// import Header from './components/Header/Header';
 import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 import UserPage from './components/UserPage/UserPage';
@@ -20,7 +20,7 @@ import './styles/main.css';
 
 const App = () => (
   <div>
-    <Header className="title" title="<Hacker_Feeds/>" />
+    {/* <Header className="title" title="" /> */}
     <Router>
       <Switch>
         <Redirect exact from="/" to="/home" />
