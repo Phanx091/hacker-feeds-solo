@@ -1,24 +1,36 @@
 import { API_ACTIONS } from '../actions/apiActions';
 
-const api = (state = [], action) => {
-    // let sortData = [...state, ...action.payload];
+let initialState = {
+    feed: [],
+    items: []
+}
+
+const api = (state = initialState, action) => {
+
+    
     switch (action.type) {
         case API_ACTIONS.SAVE_API:
-            // sort function by published date
-            const compare = (a,b) => {
-                if (a.level < b.level) {
-                    return -1;
-                }
-                else if (a.level > b.level) {
-                    return 1;
-                }
-                    return 0;
-            }
-              let sortData = [...state, ...action.payload];
-              let dates = sortData.sort(compare)
-            return dates;
+            return initialState = {
+                feed: [...state.feed, action.payload.feed],
+                items: [...state.items, ...action.payload.items]
+            };
         default:
             return state;
     }
 }
 export default api;
+
+
+    // sort function by published date
+    // const compare = (a,b) => {
+    //     if (a.level < b.level) {
+    //         return -1;
+    //     }
+    //     else if (a.level > b.level) {
+    //         return 1;
+    //     }
+    //         return 0;
+    // }
+    //   let sortData = initialState
+    //   let dates = sortData.sort(compare)
+

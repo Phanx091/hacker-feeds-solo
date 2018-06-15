@@ -70,9 +70,7 @@ class UserPageApi extends Component {
     super(props);
     this.state = {
       apiList: [],
-      expanded: false,
-      icon: false,
-      favorite: []
+
     } 
   }
 
@@ -95,6 +93,7 @@ logIt = () => {
   handleAddFavorites = (event) => {
     
       this.setState({
+        icon: true,
         favorite: event.target.value,
       });
        console.log('favorite');
@@ -117,7 +116,7 @@ const dataToFormat = (a,b) => {
   const { classes } = this.props;
     return (
       <div>
-        {this.props.api.sort(dataToFormat).map((data, i) => {
+        {this.props.api.items.sort(dataToFormat).map((data, i) => {
           return (
           <li key={i}>
 

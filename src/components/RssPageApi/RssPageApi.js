@@ -4,7 +4,8 @@ import React, { Component } from "react";
 // Redux
 import { connect } from "react-redux";
 import { RSS_ACTIONS } from "../../redux/actions/rssActions";
-import { FEED_ACTIONS } from "../../redux/actions/feedActions";
+// import { FEED_ACTIONS } from "../../redux/actions/feedActions";
+import { API_ACTIONS } from "../../redux/actions/apiActions";
 
 // Material-ui
 import PropTypes from 'prop-types';
@@ -18,8 +19,7 @@ import Typography from '@material-ui/core/Typography';
 
 const mapStateToProps = reduxState => ({
   rss: reduxState.rss,
-  api: reduxState.api,
-  feed: reduxState.feed
+  api: reduxState.api
 });
 
 const styles = {
@@ -58,42 +58,43 @@ class RssPageApi extends Component {
 
 
   componentDidMount() {
-    this.props.dispatch({type: FEED_ACTIONS.FETCH_FEED});
-    this.props.dispatch({type: RSS_ACTIONS.FETCH_RSS})
+    this.props.dispatch({type: API_ACTIONS.FETCH_API}); // fetch data to display on dom 
   }
- 
+
   handleClickForDelete = (id) => {
     console.log('click delete works', this.props);
-    this.props.dispatch({type: RSS_ACTIONS.DELETE_RSS, id:id});
-    this.props.dispatch({type: RSS_ACTIONS.FETCH_RSS})
+    this.props.dispatch({type: RSS_ACTIONS.DELETE_RSS, id});
   }
   render() {
     const { classes } = this.props;
     return (
       <div>
-        {this.props.feed.map((data, i) => {
+      {/* <p>this.props.feed: {JSON.stringify(this.props.feed)}</p> */}
+      {/* <p>this.props.rss: {JSON.stringify(this.props.rss)}</p> */}
+        {this.props.rss.map((data, i) => {
           return (
             <li key={i}>
-        <Card className={classes.card}>
-        <div style={{margin: '0 auto', borderRadius: '40'}}>
-          <CardMedia 
-            className={classes.media}
-            image={data.image} 
-            title={data.title}
-          />
-          </div>
-          <CardContent>
-            <Typography style={{ fontSize: '10px', textAlign: 'center' }}  component="h2">
-            {data.title}
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button style={{ fontSize: '10px', padding: '0 20px',}} size="small" color="primary" onClick={() =>  { if (window.confirm('Are you sure you wish to delete this item?'))  this.handleClickForDelete(this.props.rss[i].id)}}>
-              Remove from List
-            </Button>
-          </CardActions>
-        </Card>
-        </li>
+              <Card className={classes.card}>
+              <div style={{margin: '0 auto', borderRadius: '40'}}>
+              {/* {JSON.stringify(data)} */}
+                <CardMedia 
+                className={classes.media}
+                image={data.image}
+                title={data.title}/>
+                {data.url}
+                </div>
+                <CardContent>
+                  <Typography style={{ fontSize: '10px', textAlign: 'center' }}  component="h2">
+                  {data.title}
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button style={{ fontSize: '10px', padding: '0 20px',}} size="small" color="primary" onClick={() =>  { if (window.confirm('Are you sure you wish to delete this item?'))  this.handleClickForDelete(data.id)}}>
+                    Remove from List
+                  </Button>
+                </CardActions>
+              </Card>
+            </li>
       )})}
       </div>
     );

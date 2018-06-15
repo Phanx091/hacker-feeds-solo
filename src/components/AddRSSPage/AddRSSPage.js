@@ -4,7 +4,6 @@ import { RSS_ACTIONS } from '../../redux/actions/rssActions';
 // import axios from 'axios';
 import Nav from "../../components/Nav/Nav";
 
-
 const mapStateToProps = reduxToState => ({
   user: reduxToState.user,
   rss: reduxToState.rss
@@ -51,7 +50,7 @@ class AddRssPage extends Component {
         <b>Recommend RSS</b>
 
         <form>
-            
+
         </form>
 
         <form>
@@ -63,7 +62,6 @@ class AddRssPage extends Component {
         </form>
 
         <form>
-         
            
         </form> 
          {/* <ul>
