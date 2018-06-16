@@ -1,12 +1,27 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-// import { withStyles } from '@material-ui/core/styles';
+
+import { withStyles } from '@material-ui/core/styles';
 import { connect } from "react-redux";
 // import { API_ACTIONS } from "../../redux/actions/apiActions";
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import IconButton from '@material-ui/core/IconButton';
-import DoneIcon from '@material-ui/icons/Done';
+import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
+import {FAVORITE_ACTIONS} from '../../redux/actions/favoriteActions';
 
+
+
+
+
+const styles = theme => ({
+    root: {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'flex-end',
+    },
+    icon: {
+      margin: theme.spacing.unit * 2,
+    },
+  });
 
 
 const mapStateToProps = reduxState => ({
@@ -14,47 +29,39 @@ const mapStateToProps = reduxState => ({
     api: reduxState.api,
 
   });
-
-
 class FavoriteIconButton extends React.Component {
   state = {
     icon: false,
+   
   };
-  
-
-
-handleAddFavorites = (event) => {
+handleAddFavorites = () => {
 console.log('click ckick');
 this.setState({
     icon: !this.state.icon,
+  
 })
-// this.props.dispatch({type: API_ACTIONS.ADD_API});
+// this.setStates({
+//     favorite: this.props.favorite,
+// })
+this.props.dispatch({type: FAVORITE_ACTIONS.ADD_FAVORITE, payload: this.props.favorite});
 
 console.log('Add Favorite:', this.props.favorite);
-
-      
+ 
 }
-
-
   render() {
     const { classes } = this.props;
-    // const { linkIt } = this.props.api.items.link;
     return (
-    <div>
-
+    <div className={classes.root}>
         <IconButton aria-label="Add to favorites" onClick={this.handleAddFavorites}>
-            {this.state.icon ? <FavoriteIcon /> : <DoneIcon/>}
+            {this.state.icon ? <FavoriteIcon className={classes.icon} color="secondary"/> : <FavoriteBorder color="primary" />}
         </IconButton>
-
     </div>
     );
   }
 }
 
-FavoriteIconButton.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
+// FavoriteIconButton.propTypes = {
+//   classes: PropTypes.object.isRequired,
+// };
 
-// We need an intermediary variable for handling the recursive nesting.
-
-export default connect(mapStateToProps)(FavoriteIconButton);
+export default connect(mapStateToProps)(withStyles(styles)(FavoriteIconButton));

@@ -132,7 +132,9 @@ const dataToFormat = (a,b) => {
               </IconButton>
             } 
             title={data.title}/>  
-          <CardMedia className={classes.media} image={data.thumbnail} />
+          <CardMedia className={classes.media} image={data.thumbnail} alt=""/>
+
+
 
           <CardContent>
           {data.author}<br/>

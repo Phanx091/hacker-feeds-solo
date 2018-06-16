@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-// import { RSS_ACTIONS } from '../../redux/actions/rssActions';
+import { RSS_ACTIONS } from '../../redux/actions/rssActions';
 import axios from 'axios';
 // import Nav from "../../components/Nav/Nav";
 
@@ -19,12 +19,12 @@ class List extends Component {
 
   }
  
-  
 
   componentDidMount() {
     this.getRecommendedLinks();
   }
 
+  // Get recommendList from database
   getRecommendedLinks(rss) {
     axios({
       method: "GET",
@@ -39,31 +39,26 @@ class List extends Component {
   .catch((error) => {
       alert('Error on axios post');
   });
-
 }
 
-
+// Adds recommendList to database:rss
+handleForAddRecommendList(url) {
+    const action = { type: RSS_ACTIONS.ADD_RSS, payload: {url:url}};
+    this.props.dispatch(action);
+}
 
   render() {
 
     
     return (
-    
       <div>
-      
-        
-
         <div>
           <ul>
           {this.state.recommendList.map((list, i) => {
             return (
-          <li key={i}>  <div style={{textAlign: 'center', margin: '15px', padding: 1}}> <br/>{list.title} <br/><img border-radius='20%' height="160" width="160" src={list.image} alt="" className="img-responsive"/></div></li>)})}
+          <li key={i}>  <div style={{textAlign: 'center', margin: '10px', padding: 1}}> <br/>{list.title} <br/><img border-radius='20%' height="120" width="120" src={list.image} alt="" className="img-responsive"/><button onClick={() => this.handleForAddRecommendList(list.url)}>add</button></div></li>)})}
           </ul>
        </div>
-
-
-
-      
       </div>
     );
   }

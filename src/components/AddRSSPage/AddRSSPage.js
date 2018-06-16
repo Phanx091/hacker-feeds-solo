@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { RSS_ACTIONS } from '../../redux/actions/rssActions';
-import axios from 'axios';
+// import axios from 'axios';
 import Nav from "../../components/Nav/Nav";
 import List from "../list/list";
 

@@ -21,16 +21,16 @@ const mapStateToProps = reduxState => ({
 
 
 
-function getModalStyle() {
-  const top = 40 ;
-  const left = 40;
+// function getModalStyle() {
+//   const top = 40 ;
+//   const left = 40;
 
-  return {
-    top: `${top}%`,
-    left: `${left}%`,
+//   return {
+//     top: `${top}%`,
+//     left: `${left}%`,
     // transform: `translate(-${top}%, -${left}%)`,
-  };
-}
+//   };
+// }
 
 const styles = theme => ({
   paper: {

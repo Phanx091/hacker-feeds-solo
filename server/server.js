@@ -11,6 +11,7 @@ const passport = require('./strategies/user.strategy');
 // Route includes
 const userRouter = require('./routes/user.router');
 const rssRouter = require('./routes/rss.router');
+const favRouter = require('./routes/favorite.router');
 
 
 // Body parser middleware
@@ -27,6 +28,7 @@ app.use(passport.session());
 /* Routes */
 app.use('/api/user', userRouter);
 app.use('/api/rss', rssRouter);
+app.use('/api/fav', favRouter);
 
 
 

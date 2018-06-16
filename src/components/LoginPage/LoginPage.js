@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import TextField from '@material-ui/core/TextField';
+import PasswordField from 'material-ui-password-field';
 import { triggerLogin, formError, clearError } from '../../redux/actions/loginActions';
 import './LoginPageCss.css';
 
@@ -66,7 +68,7 @@ class LoginPage extends Component {
 
       <div>
 
-        <div class="title">
+        <div className="title">
         <h1>Hacker_feeds</h1>
         </div>
         { this.renderAlert() }
@@ -74,18 +76,14 @@ class LoginPage extends Component {
           <h1>Login</h1>
           <div>
               <h2>Username:</h2>
-              <input
-                type="text"
-                name="username"
+              <TextField
                 value={this.state.username}
                 onChange={this.handleInputChangeFor('username')}
               />
           </div>
           <div>
               <h2>Password:</h2>
-              <input
-                type="password"
-                name="password"
+              <PasswordField
                 value={this.state.password}
                 onChange={this.handleInputChangeFor('password')}
               />

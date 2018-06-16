@@ -8,7 +8,7 @@ import { RSS_ACTIONS } from '../actions/rssActions';
 function* postRSSForm(action) {
   try {
     const formPost = yield callPostRss(action.payload);
-    console.log('FormPost.post saga.axios success', formPost);
+    // console.log('FormPost.post saga.axios success', formPost);
     yield dispatch({
       type: RSS_ACTIONS.ADD_RSS,
       payload: formPost
@@ -22,14 +22,12 @@ function* postRSSForm(action) {
 function* fetchRss() {
   try{
     const RssResponse = yield callGetRss();
-    console.log('RssResponse.get saga.axios success', RssResponse);
+    // console.log('RssResponse.get saga.axios success', RssResponse);
     yield dispatch({
       type: RSS_ACTIONS.SAVE_RSS, // To rssReducer 
       payload: RssResponse,
     })
-    // yield dispatch({
-    //   type: API_ACTIONS.SAVE_API, 
-    // })
+
     } catch (error) {
   }
 }

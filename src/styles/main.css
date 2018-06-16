@@ -27,7 +27,7 @@ input {
     margin-bottom: 1px;
     align-items: center;
     margin: auto;
-    display: block;
+    /* display: block; */
 }
 
 input[type="submit"] {
