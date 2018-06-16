@@ -9,7 +9,7 @@ const mapStateToProps = reduxToState => ({
   user: reduxToState.user,
   rss: reduxToState.rss
 });
-class List extends Component {
+class RecommendRSS extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -65,4 +65,4 @@ handleForAddRecommendList(url) {
 }
 
 // this allows us to use <App /> in index.js
-export default connect(mapStateToProps)(List);
+export default connect(mapStateToProps)(RecommendRSS);

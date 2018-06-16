@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { RSS_ACTIONS } from '../../redux/actions/rssActions';
 // import axios from 'axios';
 import Nav from "../../components/Nav/Nav";
-import List from "../list/list";
+import RecommendRSS from "../RecommendRSS/RecommendRSS";
 
 
 const mapStateToProps = reduxToState => ({
@@ -68,7 +68,7 @@ class AddRssPage extends Component {
         <b>Recommend RSS</b>
 
         <div>
-          <List/>
+          <RecommendRSS/>
          
        </div>
 
