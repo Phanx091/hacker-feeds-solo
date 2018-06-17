@@ -6,21 +6,23 @@ import {
   Switch,
 } from 'react-router-dom';
 
-// import Header from './components/Header/Header';
+import Header from './components/Header/Header';
 import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 import UserPage from './components/UserPage/UserPage';
-import RssList from './components/RssList/RssList';
+import FavoritePage from './components/FavoritePage/FavoritePage';
 import AddRssPage from './components/AddRssPage/AddRssPage';
 import RssPage from './components/RssPage/RssPage';
+import WelcomeStartPage from './components/WelcomePage/WelcomePage';
 
 
 import './styles/main.css';
 
 
+
 const App = () => (
   <div>
-    {/* <Header className="title" title="" /> */}
+    <Header className="title" title="" />
     <Router>
       <Switch>
         <Redirect exact from="/" to="/home" />
@@ -33,12 +35,16 @@ const App = () => (
           component={RegisterPage}
         />
         <Route
+          path="/welcome"
+          component={WelcomeStartPage}
+        />
+        <Route
           path="/user"
           component={UserPage}
         />
         <Route
-          path="/list"
-          component={RssList}
+          path="/favorite"
+          component={FavoritePage}
         />
         <Route
           path="/rss"
@@ -48,6 +54,7 @@ const App = () => (
           path="/my"
           component={RssPage}
         />
+         
         {/* OTHERWISE (no path!) */}
         <Route render={() => <h1>404</h1>} />
 

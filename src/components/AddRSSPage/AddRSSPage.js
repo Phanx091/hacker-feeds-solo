@@ -68,7 +68,7 @@ class AddRssPage extends Component {
         <b>Recommend RSS</b>
 
         <div>
-          <RecommendRSS/>
+          <RecommendRSS />
          
        </div>
 

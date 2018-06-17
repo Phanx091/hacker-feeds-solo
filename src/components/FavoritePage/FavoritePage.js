@@ -11,7 +11,7 @@ const mapStateToProps = state => ({
   user: state.user,
 });
 
-class RssList extends Component { // also the page where you cab favorite articles 
+class FavoritePage extends Component { // also the page where you cab favorite articles 
   constructor(props) {
     super(props);
 
@@ -67,7 +67,7 @@ class RssList extends Component { // also the page where you cab favorite articl
         <div>
           <p>
            
-            RssList
+            MY FAVORITE ARTILES 
           </p>
         </div>
       );
@@ -84,4 +84,4 @@ class RssList extends Component { // also the page where you cab favorite articl
 
 
 // this allows us to use <App /> in index.js
-export default connect(mapStateToProps)(RssList);
+export default connect(mapStateToProps)(FavoritePage);

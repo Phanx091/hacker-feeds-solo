@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchUser } from "../../redux/actions/userActions";
 import Nav from "../../components/Nav/Nav";
-import RssPageApi from "../RssPageApi/RssPageApi";
+// import RssPageApi from "../RssPageApi/RssPageApi";
+import RssForm from './RssForm';
 
 
 
@@ -24,10 +25,10 @@ class RssPage extends Component {
     if (this.props.user.userName) {
       content = (
         <div>
-          <h1 id="welcome">Welcome, {this.props.user.userName}!</h1>
+          <h1 id="welcome">{this.props.user.userName}, this allow you view your save rss and delete them</h1>
         <ul>
-
-      <RssPageApi/>
+          <RssForm/>
+      {/* <RssPageApi/> */}
         </ul>
         </div>
       );
@@ -36,7 +37,7 @@ class RssPage extends Component {
       <div>
         <Nav />
         {content}
-   
+ 
       </div>
     );
   }

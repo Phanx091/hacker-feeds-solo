@@ -7,11 +7,7 @@ import { FAVORITE_ACTIONS } from '../actions/favoriteActions';
 function* postFavoriteForm(action) {
   try {
     console.log('postFavorite');
-    const postFavForm = yield callPostFavorite(action.payload);
-    // yield dispatch({
-    //   type: FAVORITE_ACTIONS.ADD_FAVORITE,
-    //   payload: postFavForm
-    // })
+   yield callPostFavorite(action.payload);
 
   } catch (error) {
   }

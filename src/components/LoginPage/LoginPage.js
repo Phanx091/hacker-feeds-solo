@@ -29,7 +29,7 @@ class LoginPage extends Component {
   
   componentWillReceiveProps(nextProps) {
     if (nextProps.user.userName) {
-      this.props.history.push('/user');
+      this.props.history.push('/welcome');
     }
   }
 

@@ -41,7 +41,7 @@ const styles = theme => ({
     transitionDuration: '0.3s',
   },
   media: {
-    height: 7,
+    // height: 7,
     paddingTop: '56.25%', // 16:9
   },
 
@@ -131,8 +131,10 @@ const dataToFormat = (a,b) => {
                 <MoreVertIcon />
               </IconButton>
             } 
-            title={data.title}/>  
-          <CardMedia className={classes.media} image={data.thumbnail} alt=""/>
+            title={data.title} 
+            titlestyle={{'fontSize':'5px', 'fontWeight':'bold'}}/>  
+          <CardMedia className={classes.media} image={data.thumbnail} title="something"/>
+            
 
 
 
