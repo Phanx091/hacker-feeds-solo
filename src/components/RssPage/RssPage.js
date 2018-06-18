@@ -25,10 +25,10 @@ class RssPage extends Component {
     if (this.props.user.userName) {
       content = (
         <div>
-          <h1 id="welcome">{this.props.user.userName}, this allow you view your save rss and delete them</h1>
+          <h1 id="welcome">{this.props.user.userName}, VIEW AND DELETE</h1>
         <ul>
           <RssForm/>
-      {/* <RssPageApi/> */}
+  
         </ul>
         </div>
       );

@@ -69,7 +69,9 @@ class LoginPage extends Component {
       <div>
 
         <div className="title">
-        <h1>Hacker_feeds</h1>
+          <div className="title_padding">
+            <h1>Hacker_feeds</h1>
+          </div>
         </div>
         { this.renderAlert() }
         <form className="loginBox" onSubmit={this.login}>

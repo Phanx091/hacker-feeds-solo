@@ -1,14 +1,25 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { RSS_ACTIONS } from '../../redux/actions/rssActions';
-// import axios from 'axios';
 import Nav from "../../components/Nav/Nav";
 import RecommendRSS from "../RecommendRSS/RecommendRSS";
+import TextField from '@material-ui/core/TextField';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 
 
 const mapStateToProps = reduxToState => ({
   user: reduxToState.user,
   rss: reduxToState.rss
+});
+const styles = theme => ({
+  button: {
+    margin: theme.spacing.unit,
+  },
+  input: {
+    display: 'none',
+  },
 });
 class AddRssPage extends Component {
   constructor(props) {
@@ -44,33 +55,25 @@ class AddRssPage extends Component {
 
   render() {
 
-    
+    const { classes } = this.props
     return (
     
       <div>
         <Nav />
-        <form>
-       
-          {/* {(JSON.stringify(this.state.recommendList))} */}
-          <input
-            onChange={this.handleChangeForRSS}
-            name="url"
-            placeholder="RSS URL HERE"
-          />
-           
-          {/* <div style={{textAlign: 'center', margin: '20px'}}>
-            <p style={{opacity: 0.5}}></p> */}
+        <div className="addRss">
+          <TextField
+                name="url"
+                placeholder="RSS URL HERE"
+                onChange={this.handleChangeForRSS}
+                style={{width: '200px'}}
+              />
+          <Button color="primary" onClick={this.handleClickForRSS}> Add </Button>
+        </div>
 
-          <button onClick={this.handleClickForRSS}> Add </button>
-          {/* </div> */}
-
-        </form>
         <b>Recommend RSS</b>
-
         <div>
           <RecommendRSS />
-         
-       </div>
+        </div>
 
 
 
@@ -79,6 +82,8 @@ class AddRssPage extends Component {
     );
   }
 }
+AddRssPage.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
 
-// this allows us to use <App /> in index.js
-export default connect(mapStateToProps)(AddRssPage);
+export default connect(mapStateToProps)(withStyles(styles)(AddRssPage));

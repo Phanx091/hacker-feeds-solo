@@ -1,10 +1,23 @@
 .welcome {
     background-color: white;
-    padding: 120px;
-    padding-top: 300px;
-    /* padding-left: 100px; */
-    text-align: center;
-    margin: 10px;
+    /* padding: 10px;
+    padding-top: 30px;
+    padding-left: 100px; */
+
+    margin: 60px;
+    width: 70% ;
+
 
 }
+h5 {
+    font-size: 20px;
+    text-align: center;
+}
+p {
+    position: relative;
+    text-align: center;
+}
 
+.spacing {
+    padding: 70px;
+}

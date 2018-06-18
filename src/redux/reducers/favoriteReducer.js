@@ -3,7 +3,7 @@ import { FAVORITE_ACTIONS } from '../actions/favoriteActions';
 
   const favorite = (state = [], action) => {
     switch (action.type) {
-        case FAVORITE_ACTIONS.SAVE_RSS:
+        case FAVORITE_ACTIONS.SAVE_FAVORITE:
             console.log(`FAVORITE Reducer`, action.payload);
             return action.payload
         default:

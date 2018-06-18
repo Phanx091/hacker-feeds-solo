@@ -57,9 +57,11 @@ class WelcomeStartPage extends Component { // also the page where you cab favori
     if (this.props.user.userName) {
 
       content = (
-        <div>
+        <div className="welcome">
+        <p className="welcomeTag">
         <h1 id="welcome">Welcome, {this.props.user.userName}.</h1>
-        <h2> lets get started by pressing next</h2>
+        </p>
+        <h5> lets get started by pressing next</h5>
       <ul>
 
       </ul>
@@ -81,24 +83,23 @@ class WelcomeStartPage extends Component { // also the page where you cab favori
     //     }
     
     return (
-        
-      <div>
-        { content }
+        <div> 
      
+        { content }
+        <div className="spacing">
+        <br />
+        </div>
+        {/* <br/>
         <br/>
         <br/>
         <br/>
         <br/>
-        <br/>
-        <br/>
-        {/* <label htmlFor="contained-button-file">
-        <div className="welcome"> */}
-        <Link to="/user"><h1> NEXT </h1>
-        {/* <div dangerouslySetInnerHTML={{__html:"<h1>" + "NEXT" + "</h1>"}}/> */}
- 
+        <br/> */}
+    
+        <div className="next">
+        <Link to="/user"><p><h1> NEXT </h1></p>
         </Link>
-        {/* </div>
-        </label> */}
+        </div>
     
 
       </div>
