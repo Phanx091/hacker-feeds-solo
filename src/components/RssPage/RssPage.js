@@ -25,7 +25,7 @@ class RssPage extends Component {
     if (this.props.user.userName) {
       content = (
         <div>
-          <h1 id="welcome">{this.props.user.userName}, VIEW AND DELETE</h1>
+          <h2>My RSS</h2>
         <ul>
           <RssForm/>
   

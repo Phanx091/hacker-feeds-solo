@@ -147,12 +147,12 @@ class Nav extends React.Component {
               <ListItemText primary="Add" />
             </ListItem>
             <ListItem button component="a" href="/my">
-              <ListItemText primary="RSS" />
+              <ListItemText primary="My RSS" />
             </ListItem>
             <ListItem button component="a" href="/favorite">
               <ListItemText primary="Favorites" />
             </ListItem>
-            <ListItem button component="a" href="/home">
+            <ListItem button component="a" href="/tech">
               <ListItemText primary="Logout" />
             </ListItem>
           </List>

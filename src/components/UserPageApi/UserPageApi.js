@@ -52,9 +52,7 @@ const styles = theme => ({
   expandOpen: {
     transform: "rotate(180deg)"
   },
-  avatar: {
-    backgroundColor: red[500]
-  }
+
 });
 
 const mapStateToProps = reduxState => ({
@@ -72,6 +70,7 @@ class UserPageApi extends Component {
 
   componentDidMount() {
     this.props.dispatch({ type: API_ACTIONS.FETCH_API });
+    this.defaultMesssage();
   }
   handleExpandClick = () => {
     this.setState({
@@ -88,19 +87,32 @@ class UserPageApi extends Component {
       return dateB - dateA;
     };
 
+    this.defaultMesssage = () => {
+      const noArticlesArray = this.props.api.items; 
+      if (noArticlesArray.length === 0) {
+        return 'Click on the Menu button and add your first rss' 
+      }
+
+
+    }
+
+
+
+
+
+
+
     const { classes } = this.props;
     return (
       <div>
+     
+
         {this.props.api.items.sort(dataToFormat).map((data, i) => {
           return (
             <li key={i}>
               <Card className={classes.card}>
                 <CardHeader
-                  action={
-                    <IconButton>
-                      <MoreVertIcon />
-                    </IconButton>
-                  }
+          
                   title={data.title}
                   titlestyle={{ fontSize: "5px", fontWeight: "bold" }}
                 />
@@ -144,7 +156,7 @@ class UserPageApi extends Component {
                       className="jasonphan"
                       dangerouslySetInnerHTML={{
                         __html:
-                          "<style>img{display:None} a{color:blue!important} a:hover{color: red} p{justify-content:initial!important}</style>" +
+                          "<style>img{display:None}  a{color:blue!important} a:hover{color: red} p{justify-content:initial!important}</style>" +
                           data.content
                       }}
                     />
@@ -155,6 +167,7 @@ class UserPageApi extends Component {
             </li>
           );
         })}
+
       </div>
     );
   }

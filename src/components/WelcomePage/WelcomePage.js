@@ -68,23 +68,11 @@ class WelcomeStartPage extends Component { // also the page where you cab favori
         </div>
       );
     }
-    // function TextButton(props) {
-    //     const { classes } = props; 
-    //     return (
-    //     <div>
-    //     <label htmlFor="contained-button-file">
-    //     <Link to="/user"><div dangerouslySetInnerHTML={{__html:"<h1>" + "NEXT" + "</h1>"}}/>
- 
-    //     </Link>
-    //     </label>
-    //     </div>
 
-    //      )
-    //     }
-    
+
     return (
         <div> 
-     
+    
         { content }
         <div className="spacing">
         <br />
@@ -97,6 +85,11 @@ class WelcomeStartPage extends Component { // also the page where you cab favori
         <br/> */}
     
         <div className="next">
+        <Link to="/tutorial"><p> Tutorial? </p>
+        </Link>
+        </div>
+        <div className="next">
+        <br/>
         <Link to="/user"><p><h1> NEXT </h1></p>
         </Link>
         </div>

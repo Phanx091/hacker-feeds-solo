@@ -21,14 +21,15 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
     if(req.isAuthenticated()) {
         const fav_id = req.body
-        const queryText = `INSERT INTO "favoritearticles" ("author", "link", "pubDate", "thumbnail", "title", "person_id")
-                           VALUES ($1, $2, $3, $4, $5, $6) RETURNING "favoritearticles";`;
+        const queryText = `INSERT INTO "favoritearticles" ("author", "link", "pubDate", "thumbnail", "title", "description", "person_id")
+                           VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "favoritearticles";`;
         const queryValues = [
             fav_id.author,  
             fav_id.link, 
             fav_id.pubDate, 
             fav_id.thumbnail,
-            fav_id.title, 
+            fav_id.title,
+            fav_id.description, 
             req.user.id
         ];
         pool.query(queryText, queryValues)

@@ -88,6 +88,8 @@ class LoginPage extends Component {
               <PasswordField
                 value={this.state.password}
                 onChange={this.handleInputChangeFor('password')}
+                style={{width: '210px'}}
+
               />
           </div>
           <div>

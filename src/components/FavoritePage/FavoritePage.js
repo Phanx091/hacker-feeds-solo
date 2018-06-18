@@ -28,18 +28,20 @@ const mapStateToProps = reduxToState => ({
 const styles = theme => ({
   root: {
     width: '100%',
-    minWidth: '100%'
-
+    minWidth: '100%',
+    margin: 1,
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
-    flexBasis: '88.33%',
+    flexBasis: '100.33%',
     flexShrink: 0,
+    margin: 1,
     // minWidth: '10%',
   },
   secondaryHeading: {
-    fontSize: theme.typography.pxToRem(5),
+    fontSize: theme.typography.pxToRem(3),
     color: theme.palette.text.secondary,
+    margin: 1,
   },
   link: {
     color: theme.palette.primary.main,
@@ -93,7 +95,7 @@ class FavoritePage extends Component {
     return (
       <div>
         <Nav />
-FAVORITE TITLE
+<b>FAVORITE TITLE</b>
   
 
             <ul>
@@ -119,21 +121,18 @@ FAVORITE TITLE
                     */}
                     
 
-
-
                     <Typography variant="caption">
-                    {list.title}
+                      <div className="jasonphan" dangerouslySetInnerHTML={{ __html:"<style>img{display:None} p{justify-content:initial!important}</style>" +
+                      list.description}}/>
+    
                     </Typography>
 
 
                     <Typography variant="caption">
-               
                     {list.author}
                     <br/>
                     {moment(list.pubDate).format('MM/DD/YY')}
                     <br/>
-       
-                   
                     <a href={list.link} className={classes.link}>Link</a>
                     </Typography>
 

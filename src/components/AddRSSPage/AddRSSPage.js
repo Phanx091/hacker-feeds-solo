@@ -58,14 +58,14 @@ class AddRssPage extends Component {
     const { classes } = this.props
     return (
     
-      <div>
+      <div className="">
         <Nav />
         <div className="addRss">
           <TextField
                 name="url"
-                placeholder="RSS URL HERE"
+                placeholder="Add RSS url here"
                 onChange={this.handleChangeForRSS}
-                style={{width: '200px'}}
+                style={{width: '250px'}}
               />
           <Button color="primary" onClick={this.handleClickForRSS}> Add </Button>
         </div>
