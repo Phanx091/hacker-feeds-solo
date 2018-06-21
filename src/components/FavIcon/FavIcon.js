@@ -57,8 +57,4 @@ class FavoriteIconButton extends React.Component {
   }
 }
 
-// FavoriteIconButton.propTypes = {
-//   classes: PropTypes.object.isRequired,
-// };
-
 export default connect(mapStateToProps)(withStyles(styles)(FavoriteIconButton));

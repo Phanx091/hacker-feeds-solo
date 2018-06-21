@@ -1,23 +1,36 @@
-.welcome {
+.tutorial {
     background-color: white;
     /* padding: 10px;
     padding-top: 30px;
     padding-left: 100px; */
 
-    margin: 60px;
-    width: 70% ;
+    margin: 40px;
+    width: 75% ;
+    text-align: center;
 
 
 }
-h5 {
-    font-size: 20px;
+h2 {
+   
     text-align: center;
 }
 p {
     position: relative;
     text-align: center;
 }
+.gif {
+    display : block;
+    left: 50%;
+    top: 50%;
+    text-align: center;
+
+
+}
 
 .spacing {
     padding: 70px;
+}
+
+.ready {
+    text-align: center;
 }

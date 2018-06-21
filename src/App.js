@@ -15,13 +15,7 @@ import AddRssPage from './components/AddRssPage/AddRssPage';
 import RssPage from './components/RssPage/RssPage';
 import WelcomeStartPage from './components/WelcomePage/WelcomePage';
 import TutorialPage from './components/TutorialPage/TutorialPage';
-import TechnologyPage from './components/TechnologyPage/TechnologyPage';
-
-
 import './styles/main.css';
-
-
-
 
 const App = () => (
   <div>
@@ -61,11 +55,7 @@ const App = () => (
           path="/tutorial"
           component={TutorialPage}
         />
-          <Route
-          path="/tech"
-          component={TechnologyPage}
-        />
-         
+     
         {/* OTHERWISE (no path!) */}
         <Route render={() => <h1>404</h1>} />
 

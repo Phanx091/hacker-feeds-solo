@@ -2,13 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchUser } from "../../redux/actions/userActions";
 import Nav from "../../components/Nav/Nav";
-// import RssPageApi from "../RssPageApi/RssPageApi";
-import RssForm from './RssForm';
-
-
+import RssForm from "./RssForm";
 
 const mapStateToProps = reduxState => ({
-  user: reduxState.user,
+  user: reduxState.user
 });
 class RssPage extends Component {
   componentDidMount() {
@@ -26,10 +23,9 @@ class RssPage extends Component {
       content = (
         <div>
           <h2>My RSS</h2>
-        <ul>
-          <RssForm/>
-  
-        </ul>
+          <ul>
+            <RssForm />
+          </ul>
         </div>
       );
     }
@@ -37,15 +33,8 @@ class RssPage extends Component {
       <div>
         <Nav />
         {content}
- 
       </div>
     );
   }
 }
 export default connect(mapStateToProps)(RssPage);
-
-
-
-
-
-

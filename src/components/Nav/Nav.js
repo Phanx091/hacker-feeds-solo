@@ -8,20 +8,14 @@ import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
-// import MenuItem from '@material-ui/core/MenuItem';
 import Typography from '@material-ui/core/Typography';
-// import TextField from '@material-ui/core/TextField';
-// import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import Hidden from '@material-ui/core/Hidden';
-
-
-
+import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
-// import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 
 
@@ -56,9 +50,6 @@ const styles = theme => ({
   'appBarShift-left': {
     marginLeft: drawerWidth,
   },
-  // 'appBarShift-right': {
-  //   marginRight: drawerWidth,
-  // },
   menuButton: {
     marginLeft: 12,
     marginRight: 20,
@@ -66,17 +57,9 @@ const styles = theme => ({
   hide: {
     display: 'none',
   },
-  // drawerPaper: {
-  //   position: 'fixed',
-  //   width: drawerWidth,
-  // },
-  // drawerHeader: {
-  //   display: 'flex',
-  //   alignItems: 'center',
-  //   justifyContent: 'flex-end',
-  //   padding: '0 8px',
-  //   ...theme.mixins.toolbar,
-  // },
+  copyright: {
+    padding:1,
+  },
   content: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
@@ -89,23 +72,10 @@ const styles = theme => ({
   'content-left': {
     marginLeft: -drawerWidth,
   },
-  // 'content-right': {
-  //   marginRight: -drawerWidth,
-  // },
-  // contentShift: {
-  //   transition: theme.transitions.create('margin', {
-  //     easing: theme.transitions.easing.easeOut,
-  //     duration: theme.transitions.duration.enteringScreen,
-  //   }),
-  // },
   'contentShift-left': {
     marginLeft: 0,
   },
-  // 'contentShift-right': {
-  //   marginRight: 0,
-  // },
 });
-
 class Nav extends React.Component {
   state = {
     open: false,
@@ -157,7 +127,10 @@ class Nav extends React.Component {
             </ListItem>
           </List>
         </div>
-        {/* <Divider /> */}
+        <Divider />
+        <div className={classes.copyright}>
+        <Typography variant="caption">© 2018 Jason Phan</Typography>
+        </div>
       </Drawer>
     );
 
@@ -187,11 +160,7 @@ class Nav extends React.Component {
               >
                 <MenuIcon />
               </IconButton>
-              <Typography variant="title" styles="text-align: center" color="inherit" noWrap>
-              
 
-              {/* <div dangerouslySetInnerHTML={{__html:'< Hacker_Feeds / >'}}/> */}
-              </Typography>
             </Toolbar>
           </AppBar>
           <Hidden mdUp>

@@ -20,16 +20,9 @@ import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
 import Collapse from "@material-ui/core/Collapse";
 import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
-import red from "@material-ui/core/colors/red";
-// import FavoriteIcon from '@material-ui/icons/Favorite';
-// import DoneIcon from '@material-ui/icons/Done';
-// import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
 import SimpleModal from "../Modals/Modals";
 import FavoriteIconButton from "../FavIcon/FavIcon";
-// import { EHOSTUNREACH } from "constants";
 
 /// Material-ul-const
 const styles = theme => ({
@@ -38,6 +31,7 @@ const styles = theme => ({
     overflow: "hidden",
     minWidth: 375,
     transitionDuration: "0.3s",
+
   },
   media: {
     paddingTop: "56.25%" // 16:9
@@ -114,7 +108,7 @@ class UserPageApi extends Component {
                 <CardHeader
           
                   title={data.title}
-                  titlestyle={{ fontSize: "5px", fontWeight: "bold" }}
+             
                 />
                 <CardMedia
                   className={classes.media}
@@ -148,15 +142,11 @@ class UserPageApi extends Component {
 
                 <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
                   <CardContent>
-                    <Typography paragraph variant="body2">
-                      {/* empty for now */}
-                    </Typography>
-                    {/* <Typography paragraph> */}
                     <div
                       className="jasonphan"
                       dangerouslySetInnerHTML={{
                         __html:
-                          "<style>img{display:None}  a{color:blue!important} a:hover{color: red} p{justify-content:initial!important}</style>" +
+                          "<style>img{display:None}  a{color:blue!important} p{position: relative}  a:hover{color: red} p{justify-content:initial!important}</style>" +
                           data.content
                       }}
                     />

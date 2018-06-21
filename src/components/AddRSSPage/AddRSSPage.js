@@ -7,7 +7,8 @@ import TextField from '@material-ui/core/TextField';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-
+import Divider from '@material-ui/core/Divider';
+import SnackbarAlert from "../SnackBar/SnackBar";
 
 const mapStateToProps = reduxToState => ({
   user: reduxToState.user,
@@ -47,37 +48,26 @@ class AddRssPage extends Component {
     });
     console.log(event.target.value);
   };
-
-
- 
-
-
-
   render() {
-
-    const { classes } = this.props
     return (
-    
-      <div className="">
+      <div>
         <Nav />
+        <h2>Add Rss</h2>
+        <Divider/>
         <div className="addRss">
           <TextField
                 name="url"
                 placeholder="Add RSS url here"
                 onChange={this.handleChangeForRSS}
-                style={{width: '250px'}}
+                style={{width: '230px'}}
               />
-          <Button color="primary" onClick={this.handleClickForRSS}> Add </Button>
+          <Button color="primary" onClick={this.handleClickForRSS}><SnackbarAlert/></Button>
         </div>
-
         <b>Recommend RSS</b>
         <div>
           <RecommendRSS />
-        </div>
 
-
-
-      
+        </div>   
       </div>
     );
   }

@@ -3,9 +3,7 @@ import { withStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import IconButton from "@material-ui/core/IconButton";
-// import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 import { RSS_ACTIONS } from "../../redux/actions/rssActions";
-// import CheckIcon from '@material-ui/icons/CheckIcon'
 
 const styles = theme => ({
   root: {
@@ -43,16 +41,22 @@ class RecommendAddIconButton extends React.Component {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
-
-           <IconButton className={classes.icon} aria-label="Add to favorites" onClick={this.handleAddRSS}>
-           {this.state.icon ? (
-           <FavoriteIcon color="secondary"/>) : ( <i className="zmdi zmdi-rss zmdi-hc-2x mdc-text-orange"></i>)}
-            </IconButton>
-
+        <IconButton
+          className={classes.icon}
+          aria-label="Add to favorites"
+          onClick={this.handleAddRSS}
+        >
+          {this.state.icon ? (
+            <FavoriteIcon color="secondary" />
+          ) : (
+            <i className="zmdi zmdi-rss zmdi-hc-2x mdc-text-orange" />
+          )}
+        </IconButton>
       </div>
     );
   }
 }
 
-
-export default connect(mapStateToProps)(withStyles(styles)(RecommendAddIconButton));
+export default connect(mapStateToProps)(
+  withStyles(styles)(RecommendAddIconButton)
+);
