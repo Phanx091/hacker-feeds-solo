@@ -6,8 +6,6 @@ let initialState = {
 }
 
 const api = (state = initialState, action) => {
-
-    
     switch (action.type) {
         case API_ACTIONS.SAVE_API:
             return initialState = {
@@ -19,18 +17,4 @@ const api = (state = initialState, action) => {
     }
 }
 export default api;
-
-
-    // sort function by published date
-    // const compare = (a,b) => {
-    //     if (a.level < b.level) {
-    //         return -1;
-    //     }
-    //     else if (a.level > b.level) {
-    //         return 1;
-    //     }
-    //         return 0;
-    // }
-    //   let sortData = initialState
-    //   let dates = sortData.sort(compare)
 
