@@ -26,8 +26,8 @@ function* fetchFavorite() {
     } catch (error) {
   }
 }
-function* deleteFavoriteItems(payload) {
-  const { id } = payload;
+function* deleteFavoriteItems(action) {
+  const { id } = action;
   try {
     const deleteFavItems = yield callDeleteFavorite(id);
     console.log('itemDeleted.delete saga.axios success', deleteFavItems);
