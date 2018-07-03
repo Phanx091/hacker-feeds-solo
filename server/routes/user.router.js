@@ -20,7 +20,6 @@ router.post('/register', (req, res, next) => {
   
   const username = req.body.username;
   const password = encryptLib.encryptPassword(req.body.password);
-
   const queryText = 'INSERT INTO person (username, password) VALUES ($1, $2) RETURNING id';
   pool.query(queryText, [username, password])
     .then(() => { res.sendStatus(201); })
@@ -41,5 +40,4 @@ router.get('/logout', (req, res) => {
   req.logout();
   res.sendStatus(200);
 });
-
 module.exports = router;

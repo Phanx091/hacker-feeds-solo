@@ -30,8 +30,6 @@ app.use('/api/user', userRouter);
 app.use('/api/rss', rssRouter);
 app.use('/api/fav', favRouter);
 
-
-
 // Serve static files
 app.use(express.static('build'));
 
