@@ -4,7 +4,6 @@ import login from './loginReducer';
 import rss from './rssReducer';
 import api from './apiReducer';
 import favorite from './favoriteReducer';
-// import feed from './feedReducer';
 
 const store = combineReducers({
   user,
@@ -12,8 +11,6 @@ const store = combineReducers({
   rss,
   api,
   favorite,
-  // feed,
-
 });
 
 export default store;
