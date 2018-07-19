@@ -46,7 +46,7 @@ router.post('/', (req, res) => {
 });// end of router.post
 // ROUTER.delete
 router.delete("/:id", (req, res) => {
-    // if(req.isAuthenticated()) {
+    if(req.isAuthenticated()) {
         console.log(`router.delete: ${req.params.id}`);
         const delete_favorite = req.params.id;
         const queryText = 'DELETE FROM "favoritearticles" WHERE "id" = $1;';
@@ -62,8 +62,8 @@ router.delete("/:id", (req, res) => {
             console.log(`ERROR on router.delete api/fav: ${error}`);
             res.sendStatus(500);
         })
-    // } else {
-    //     res.sendStatus(403);
-    // }
+    } else {
+        res.sendStatus(403);
+    }
   }); // end of router.delete
 module.exports = router;
