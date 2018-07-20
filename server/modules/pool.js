@@ -5,9 +5,11 @@ const url = require('url');
 
 let config = {};
 
+//postgres://esqjpaohnvrmug:5688ae20eb2a50522461afc0e906b5763b7e63ebf4e56e0e9339988e4ffb0b9c@ec2-54-227-240-7.compute-1.amazonaws.com:5432/df9p06ttlikfdm
+
 if (process.env.DATABASE_URL) {
-  const params = url.parse(process.env.DATABASE_URL);
-  const auth = params.auth.split(':');
+  let params = url.parse(process.env.DATABASE_URL);
+  let auth = params.auth.split(':');
 
   config = {
     user: auth[0],
