@@ -1,9 +1,4 @@
-/* the only line you likely need to change is
 
- database: 'prime_app',
-
- change `prime_app` to the name of your database, and you should be all set!
-*/
 
 const pg = require('pg');
 const url = require('url');
@@ -11,8 +6,6 @@ const url = require('url');
 let config = {};
 
 if (process.env.DATABASE_URL) {
-  // Heroku gives a url, not a connection object
-  // https://github.com/brianc/node-pg-pool
   const params = url.parse(process.env.DATABASE_URL);
   const auth = params.auth.split(':');
 
