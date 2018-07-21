@@ -26,7 +26,6 @@ class AddRssPage extends Component {
   constructor(props) {
     super(props);
     this.state = ''
-
   }
   componentWillReceiveProps(nextProps) {
     if (nextProps.user.userName) {
