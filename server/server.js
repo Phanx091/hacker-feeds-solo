@@ -35,10 +35,10 @@ app.use('/api/fav', favRouter);
 app.use(express.static('build'));
 
 // App Set //
-const HOST = process.env.HOST || "0.0.0.0";
-const PORT = process.env.PORT || 5000;
+const host = process.env.HOST || "0.0.0.0";
+const port = process.env.PORT || 5000;
 
 /** Listen * */
-app.listen(PORT, HOST, () => {
-  console.log(`Listening on port: ${PORT}, ${HOST}`);
+app.listen(port, host, () => {
+  console.log(`Listening on port: ${port}, ${host}`);
 });
