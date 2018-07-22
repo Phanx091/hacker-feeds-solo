@@ -13,12 +13,14 @@ const mapStateToProps = reduxState => ({
 
 const styles = theme => ({
   paperClass: {
-    width: theme.spacing.unit * 120,
+    width: theme.spacing.unit * 50,
     height: theme.spacing.unit * 15,
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
-    margin: 80,
-    display: "inline-block"
+    // margin: 50,
+    // marginTop: 50,
+    // marginLeft: 50,
+    // display: "inline-block"
   }
 });
 class SimpleModal extends React.Component {
@@ -48,7 +50,7 @@ class SimpleModal extends React.Component {
         >
           <div className={classes.paperClass}>
             <p className="paper">Copy url:</p>
-            {JSON.stringify(this.props.link)}
+            <p>{JSON.stringify(this.props.link)}</p>
           </div>
         </Modal>
       </div>

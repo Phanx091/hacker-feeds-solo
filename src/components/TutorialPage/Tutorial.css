@@ -1,14 +1,11 @@
+* {
+    margin: 2;
+}
 .tutorial {
     background-color: white;
-    /* padding: 10px;
-    padding-top: 30px;
-    padding-left: 100px; */
-
     margin: 40px;
     width: 75% ;
     text-align: center;
-
-
 }
 h2 {
    
@@ -23,8 +20,6 @@ p {
     left: 50%;
     top: 50%;
     text-align: center;
-
-
 }
 
 .spacing {
