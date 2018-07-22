@@ -5,8 +5,11 @@ const pool = require('./modules/pool');
 
 const app = express();
 const bodyParser = require('body-parser');
-const sessionMiddleware = require('./modules/session-middleware');
 
+// App Set //
+const port = process.env.PORT || 5000;
+
+const sessionMiddleware = require('./modules/session-middleware');
 const passport = require('./strategies/user.strategy');
 
 // Route includes
@@ -34,11 +37,8 @@ app.use('/api/fav', favRouter);
 // Serve static files
 app.use(express.static('build'));
 
-// App Set //
-const host = process.env.HOST || "0.0.0.0";
-const port = process.env.PORT || 5000;
 
 /** Listen * */
-app.listen(port, host, () => {
-  console.log(`Listening on port: ${port}, ${host}`);
+app.listen(port, () => {
+  console.log(`Listening on port: ${port}`);
 });
