@@ -36,7 +36,9 @@ app.use('/api/fav', favRouter);
 
 // Serve static files
 app.use(express.static('build'));
-
+app.get('/*', (req, res)=> {
+  res.sendFile('/app/build/index.html');
+});
 
 /** Listen * */
 app.listen(port, () => {
