@@ -1,10 +1,11 @@
+--Collection for User
 CREATE TABLE person (
     "id" SERIAL PRIMARY KEY,
     "username" VARCHAR (80) UNIQUE NOT NULL,
     password VARCHAR (1000) NOT NULL
 );
 
-
+--Collection for Save Favorite Articles from RSS
 CREATE TABLE favoriteArticles (
     "id" SERIAL PRIMARY KEY,
     "author" VARCHAR(50),
@@ -16,6 +17,7 @@ CREATE TABLE favoriteArticles (
     "person_id" INT REFERENCES "person"
 );
 
+--Collection for Save RSS URLS
 CREATE TABLE rss (
     "id" SERIAL PRIMARY KEY,
     "url" VARCHAR (90) NOT NULL,
@@ -26,6 +28,7 @@ CREATE TABLE rss (
     "person_id" INT REFERENCES "person"
 );
 
+--Collections for Recommend RSS links
 CREATE TABLE rssLinks (
     "id" SERIAL PRIMARY KEY,
     "url" VARCHAR (90) NOT NULL,
@@ -33,8 +36,7 @@ CREATE TABLE rssLinks (
     "image" VARCHAR (150)
 );
 
-
---Recommend Rss 
+--Recommend Rss Data
 INSERT INTO "public"."rsslinks"("id", "url", "title", "image") VALUES(1, 'https://www.theverge.com/rss/frontpage', 'The Verge', 'https://ihateapplefanboys.com/wp-content/uploads/2017/12/the-verge-logo--730x410.png') RETURNING "id", "url", "title", "image";
 INSERT INTO "public"."rsslinks"("id", "url", "title", "image") VALUES(2, 'https://www.wired.com/feed/rss', 'Wired', 'http://www.satellesinc.com/wp-content/uploads/2018/03/WORKS_wired-magazine.jpg') RETURNING "id", "url", "title", "image";
 INSERT INTO "public"."rsslinks"("id", "url", "title", "image") VALUES(3, 'https://www.computerworld.com/index.rss', 'Computer World', 'https://idge.staticworld.net/ctw/computerworld-logo300x300.png') RETURNING "id", "url", "title", "image";
