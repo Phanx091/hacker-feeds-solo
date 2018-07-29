@@ -22,7 +22,6 @@ Before you get started, make sure you have the following software installed on y
     SERVER_SESSION_SECRET=superDuperSecret
     ```
     While you're in your new `.env` file, take the time to replace `superDuperSecret` with some long random string like `25POUbVtx6RKVNWszd9ERB9Bb6` to keep your application secure. If you don't do this step, create a secret with less than eight characters, or leave it as `superDuperSecret`, you will get a warning.
-* Start mongo if not running already by using `brew services start mongodb`
 * Run `npm run server`
 * Run `npm run client`
 * Navigate to `localhost:3000`
@@ -32,6 +31,7 @@ Before you get started, make sure you have the following software installed on y
 
 First time users will need to click register and create a username and password. Otherwise, here is where you'll login. The application cannot be used unless someone is logged in.
 
+- [Login](documentation/LOGIN.png)
 
 
 
