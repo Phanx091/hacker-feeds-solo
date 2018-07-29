@@ -31,7 +31,7 @@ Before you get started, make sure you have the following software installed on y
 
 First time users will need to click register and create a username and password. Otherwise, here is where you'll login. The application cannot be used unless someone is logged in.
 
-- [Login](documentation/LOGIN.png)
+- [Login](documentation/images/LOGIN.png)
 
 
 
