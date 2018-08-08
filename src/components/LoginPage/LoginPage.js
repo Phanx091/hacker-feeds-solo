@@ -3,11 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import TextField from "@material-ui/core/TextField";
 import PasswordField from "material-ui-password-field";
-import {
-  triggerLogin,
-  formError,
-  clearError
-} from "../../redux/actions/loginActions";
+import {triggerLogin,formError,clearError} from "../../redux/actions/loginActions";
 import "./LoginPageCss.css";
 
 const mapStateToProps = state => ({

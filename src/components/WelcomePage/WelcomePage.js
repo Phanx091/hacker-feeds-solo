@@ -46,7 +46,6 @@ class WelcomeStartPage extends Component {
         <div className="spacing">
           <br />
         </div>
-
         <div className="next">
           <Link to="/tutorial">
             <p> Tutorial? </p>
